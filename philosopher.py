@@ -5,12 +5,14 @@ import time
 mealss=[]
 phil_state=[]
 chops=[]
+cst=[]
 class Din_Phil:
     def __init__(self,no_of_phil=5, meal_size=3):    
         self.meals=[meal_size for i in range(no_of_phil)]
         self.chopstick=[Semaphore(value=1) for i in range(no_of_phil)]
-        self.status=[('  T  ') for i in range(no_of_phil)]
-        self.chop_hold=[('    ') for i in range(no_of_phil)]
+        self.status=[('Thinking') for i in range(no_of_phil)]
+        self.chop_hold=[(0) for i in range(no_of_phil)]
+        self.cstat=[0 for i in range(no_of_phil)]
         # print(self.meals)
         # print(self.chop_hold)
         # print(self.status)
@@ -18,24 +20,28 @@ class Din_Phil:
     def philosophers(self,i):
         nxt=(i+1)%5
         while self.meals[i]>0:
-            self.status[i]='  T  '
+            self.status[i]='Thinking'
             time.sleep(0.5)
             self.status[i]='  _  '
             if self.chopstick[i].acquire(timeout=1):
                 print("this is gt")
-                self.chop_hold[i]='  /  '
+                self.chop_hold[i]=1
+                self.cstat[i]=i+1
                 time.sleep(0.5)
                 if self.chopstick[nxt].acquire(timeout=1):
                     print("this is gt2222")
-                    self.chop_hold[i]='  /\\  '
-                    self.status[i]='  E  '
+                    self.chop_hold[i]=2
+                    self.cstat[nxt]=i+1
+                    self.status[i]='Eating'
                     time.sleep(0.5)
                     self.meals[i]-=1
                     self.chopstick[nxt].release()
-                    self.chop_hold[i]='  /  '
+                    self.chop_hold[i]=1
+                    self.cstat[nxt]=0
                 self.chopstick[i].release()
-                self.chop_hold[i]='    '
-                self.status[i]='  T  '
+                self.chop_hold[i]=0
+                self.cstat[i]=0
+                self.status[i]='Thinking'
 
 def main():
     no_of_Phil=5
@@ -52,10 +58,12 @@ def main():
         # dinnning_Philosophers.meals[0]-=1
         lst2=[dinnning_Philosophers.meals[0],dinnning_Philosophers.meals[1],dinnning_Philosophers.meals[2],dinnning_Philosophers.meals[3],dinnning_Philosophers.meals[4]]
         lst3=[dinnning_Philosophers.chop_hold[i] for i in range(0,5)]
+        lst4=[dinnning_Philosophers.cstat[i] for i in range(0,5)]
+
         phil_state.append(lst)
         mealss.append(lst2)
         chops.append(lst3)
-
+        cst.append(lst4)
         #print("".join("{:3d} ".format(m) for m in dinnning_Philosophers.meals)," : ",str(sum(dinnning_Philosophers.meals)))
         time.sleep(0.1)
     for p in phil_arr:
@@ -72,7 +80,8 @@ def get_data():
     data = {
         'array1':phil_state,
         'array2':mealss,
-        'array3':chops
+        'array3':chops,
+        'array4':cst
         # add more variables and arrays here
     }
     return data

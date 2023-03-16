@@ -2,10 +2,12 @@
 philst=[];
 mealst=[];
 cholst=[];
+cst=[]
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 async function get_states(){
+    document.getElementById("st").innerHTML="Starting Simulation";
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/data');
     xhr.onload = async function() {
@@ -16,6 +18,7 @@ async function get_states(){
             philst=data["array1"];
             mealst=data["array2"];
             cholst=data["array3"];
+            cst=data["array4"]
             console.log(cholst);
             for(var i in data){
                 result.push([i, data [i]]);
@@ -26,7 +29,7 @@ async function get_states(){
             // philst=r[0];
             // mealst=r[1];
             // cholst=r[2];
-            console.log(r);
+            // console.log(r);
             // Update the HTML elements with the data
             // console.log(data);
             for(let l=0;l<r[1].length;l++){
@@ -35,7 +38,30 @@ async function get_states(){
                 document.getElementById('02').innerHTML = r[1][l][2];
                 document.getElementById('03').innerHTML = r[1][l][3];
                 document.getElementById('04').innerHTML = r[1][l][4];
-                await sleep(1000);
+                if(cst[l][0]==0){
+                    ChopsickToTable("p15");
+                }
+                else if(cst[l][0]==1){
+                    p15ToPerson(1);
+                }
+                else if(cst[l][0]==5){
+                    p15ToPerson(5);
+                }
+                for(let j=1;j<5;j++){
+                    if(cst[l][j]==0){
+                        var temp='p'+j+""+(j+1)
+                        ChopsickToTable(temp);
+                    }
+                    else if(cst[l][j]==j){
+                        var functionName = 'p' + j+""+ (j+1) + 'ToPerson';
+                        window[functionName](j);
+                    }
+                    else if(cst[l][j]==j+1){
+                        var functionName = 'p' + j+""+ (j+1) + 'ToPerson';
+                        window[functionName](j+1);
+                    }
+                }
+                await sleep(600);
                 }
             
             // ...
@@ -47,186 +73,111 @@ async function get_states(){
     xhr.send();
 }
 
-get_states()
-async function animm(){
-        //initail wait
-        await sleep(1000);
-        //12
-        console.log("CHOPSTICK 12");
-        //1
-        p12ToPerson(1);
-        p1.classList.add("personactive"); //just for test case
-        await sleep(500);
-        ChopsickToTable("p12");
-        p1.classList.remove("personactive"); //just for test case
-        await sleep(500);
-        //2
-        p12ToPerson(2);
-        p2.classList.add("personactive"); //just for test case
-        await sleep(500);
-        ChopsickToTable("p12");
-        p2.classList.remove("personactive"); //just for test case
-        //13
-        console.log("CHOPSTICK 13");
-        await sleep(500);
-        //1
-        p13ToPerson(1);
-        p1.classList.add("personactive"); //just for test case
-        await sleep(500);
-        ChopsickToTable("p13");
-        p1.classList.remove("personactive"); //just for test case
-        await sleep(500);
-        //3
-        p13ToPerson(3);
-        p3.classList.add("personactive"); //just for test case
-        await sleep(500);
-        ChopsickToTable("p13");
-        //34
-        console.log("CHOPSTICK 34");
-        p3.classList.remove("personactive"); //just for test case
-        await sleep(500);
-        //3
-        p34ToPerson(3);
-        p3.classList.add("personactive"); //just for test case
-        await sleep(500);
-        ChopsickToTable("p34");
-        p3.classList.remove("personactive"); //just for test case
-        await sleep(500);
-        //4
-        p34ToPerson(4);
-        p4.classList.add("personactive"); //just for test case
-        await sleep(500);
-        ChopsickToTable("p34");
-        p4.classList.remove("personactive"); //just for test case
-        //25
-        console.log("CHOPSTICK 25");
-        await sleep(500);
-        //2
-        p25ToPerson(2);
-        p2.classList.add("personactive"); //just for test case
-        await sleep(500);
-        ChopsickToTable("p25");
-        p2.classList.remove("personactive"); //just for test case
-        await sleep(500);
-        //5
-        p25ToPerson(5);
-        p5.classList.add("personactive"); //just for test case
-        await sleep(500);
-        ChopsickToTable("p25");
-        p5.classList.remove("personactive"); //just for test case
-        //45
-        console.log("CHOPSTICK 45");
-        await sleep(500);
-        //4
-        p45ToPerson(4);
-        p4.classList.add("personactive"); //just for test case
-        await sleep(500);
-        ChopsickToTable("p45");
-        p4.classList.remove("personactive"); //just for test case
-        await sleep(500);
-        //5
-        p45ToPerson(5);
-        p5.classList.add("personactive"); //just for test case
-        await sleep(500);
-        ChopsickToTable("p45");
-        p5.classList.remove("personactive"); //just for test case
-        console.log("FINSHED");
-}
-animm();
-//front end
-//person ids
-var p1 = document.getElementById("p1");
-var p2 = document.getElementById("p2");
-var p3 = document.getElementById("p3");
-var p4 = document.getElementById("p4");
-var p5 = document.getElementById("p5");
-//chopsick ids
-var p12 = document.getElementById("p12");
-var p13 = document.getElementById("p13");
-var p34 = document.getElementById("p34");
-var p25 = document.getElementById("p25");
-var p45 = document.getElementById("p45");
-//move chopsticks to designated person
-function p12ToPerson(person){
-    if(person == 1){
-        p12.style.left = "-7.5rem";
-        p12.style.top = "8rem";
-    }
-    if(person == 2){
-        p12.style.left = "-10rem";
-        p12.style.top = "9rem";
-    }
-}
-function p13ToPerson(person){
-    if(person == 1){
-        p13.style.left = "-3rem";
-        p13.style.top = "8rem";
-    }
-    if(person == 3){
-        p13.style.left = "0rem";
-        p13.style.top = "9rem";
-    }
-}
-function p34ToPerson(person){
-    if(person == 3){
-        p34.style.left = "1rem";
-        p34.style.top = "13rem";
-    }
-    if(person == 4){
-        p34.style.left = "0rem";
-        p34.style.top = "17rem";
-    }
-}
-function p25ToPerson(person){
-    if(person == 2){
-        p25.style.left = "-12rem";
-        p25.style.top = "13rem";
-    }
-    if(person == 5){
-        p25.style.left = "-12rem";
-        p25.style.top = "17rem";
-    }
-}
-function p45ToPerson(person){
-    if(person == 4){
-        p45.style.left = "-2.5rem";
-        p45.style.top = "19rem";
-    }
-    if(person == 5){
-        p45.style.left = "-9rem";
-        p45.style.top = "19rem";
-    }
-}
-//place back the chopsticks
-function ChopsickToTable(stick){
-    switch(stick){
-        case "p12": {
+// get_states()
+//testcase for example only (actual code present after text case function is over)
+    function sleep(ms){
+		return new Promise(resolve => setTimeout(resolve,ms));
+	}
+	async function animm(){
+            //initail wait
+			await sleep(1000);
+            
+	}
+    animm();
+    //front end
+    //person ids
+    var p1 = document.getElementById("p1");
+    var p2 = document.getElementById("p2");
+    var p3 = document.getElementById("p3");
+    var p4 = document.getElementById("p4");
+    var p5 = document.getElementById("p5");
+    //chopsick ids
+    var p12 = document.getElementById("p12");
+    var p15 = document.getElementById("p15");
+    var p34 = document.getElementById("p34");
+    var p23 = document.getElementById("p23");
+    var p45 = document.getElementById("p45");
+    //move chopsticks to designated person
+    function p12ToPerson(person){
+        if(person == 1){
             p12.style.left = "-7.5rem";
-            p12.style.top = "11rem";
-            break;
+            p12.style.top = "8rem";
         }
-        case "p13": {
-            p13.style.left = "-3rem";
-            p13.style.top = "11rem";
-            break;
-        }
-        case "p34": {
-            p34.style.left = "-2rem";
-            p34.style.top = "15rem";
-            break;
-        }
-        case "p25": {
-            p25.style.left = "-9rem";
-            p25.style.top = "15rem";
-            break;
-        }
-        case "p45": {
-            p45.style.left = "-6rem";
-            p45.style.top = "17rem";
-            break;
-        }
-        default :{
-            console.log("ERROR");
+        if(person == 2){
+            p12.style.left = "-10rem";
+            p12.style.top = "9rem";
         }
     }
-}
+    function p15ToPerson(person){
+        if(person == 1){
+            p15.style.left = "-3rem";
+            p15.style.top = "8rem";
+        }
+        if(person == 5){
+            p15.style.left = "0rem";
+            p15.style.top = "9rem";
+        }
+    }
+    function p45ToPerson(person){
+        if(person == 5){
+            p45.style.left = "1rem";
+            p45.style.top = "13rem";
+        }
+        if(person == 4){
+            p45.style.left = "0rem";
+            p45.style.top = "17rem";
+        }
+    }
+    function p23ToPerson(person){
+        if(person == 2){
+            p23.style.left = "-12rem";
+            p23.style.top = "13rem";
+        }
+        if(person == 3){
+            p23.style.left = "-12rem";
+            p23.style.top = "17rem";
+        }
+    }
+    function p34ToPerson(person){
+        if(person == 4){
+            p34.style.left = "-2.5rem";
+            p34.style.top = "19rem";
+        }
+        if(person == 3){
+            p34.style.left = "-9rem";
+            p34.style.top = "19rem";
+        }
+    }
+    //place back the chopsticks
+    function ChopsickToTable(stick){
+        switch(stick){
+            case "p12": {
+                p12.style.left = "-7.5rem";
+                p12.style.top = "11rem";
+                break;
+            }
+            case "p15": {
+                p15.style.left = "-3rem";
+                p15.style.top = "11rem";
+                break;
+            }
+            case "p45": {
+                p45.style.left = "-2rem";
+                p45.style.top = "15rem";
+                break;
+            }
+            case "p23": {
+                p23.style.left = "-9rem";
+                p23.style.top = "15rem";
+                break;
+            }
+            case "p34": {
+                p34.style.left = "-6rem";
+                p34.style.top = "17rem";
+                break;
+            }
+            default :{
+                console.log("ERROR");
+            }
+        }
+    }

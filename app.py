@@ -1,14 +1,19 @@
 from flask import Flask,render_template,jsonify
-import philosopher
+import philosopher2
 app=Flask(__name__)
 @app.route('/')
 def index():
+    return render_template('indexx.html')
+@app.route('/Sjf')
+def Sjf():
+    return render_template('sjf.html')
+@app.route('/dinningP')
+def dinningP():
     return render_template('dp.html')
-
 @app.route('/data')
 def data():
-    philosopher.main()
-    data = philosopher.get_data()
+    philosopher2.main()
+    data = philosopher2.get_data()
     return jsonify(data)
 # @app.route("/simulate")
 # def simulate():    
