@@ -1,0 +1,181 @@
+@font-face {
+    font-family: "TitleFont";
+    src: url("cur.ttf");
+}
+:root{
+    --secondaryColor: #ECF0F1;
+}
+html{
+    scroll-behavior: smooth;
+}
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    background-color: #393939;
+    color: #ECF0F1;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body{
+    overflow-x: hidden;
+}
+.title{
+    letter-spacing: 0.5rem;
+    font-family: TitleFont;
+    text-align: center;
+    margin: 0px 25% 45px 25%;
+    font-size: 2rem;
+    backdrop-filter: blur(5rem);
+    background: transparent;
+    color: var(--secondaryColor);
+    box-shadow: 0px 0px 15px 1px #24252A;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    /* font-weight: 600; */
+}
+.abouttext{
+    font-size: larger;
+    font-weight: 600;
+    list-style: none;
+    background: transparent; 
+    padding: 1rem;
+    color: var(--secondaryColor);
+}
+#aboutus{
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    border: 0.1rem solid #24252A;
+    backdrop-filter: blur(2rem);
+    background: transparent;
+    border-left: none;
+    transition: all 0.1s;
+    min-width: max-content;
+    position:fixed;
+    left: -150rem;
+    bottom: 0px;
+    z-index: 13;
+    border-bottom-right-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+#about{
+    display: none;
+}
+body:has(#sidebox:hover) #about{
+    display: block;
+}
+body:has(#about:hover) #aboutus{
+    left: 0rem;
+}
+#sidebox{
+    /* background-color: #ECF0F1; */
+    backdrop-filter: blur(2rem);
+    z-index: 13;
+    background: transparent;
+    border: 0.1rem solid #24252A;
+    border-top: none;
+    transition: all 0.1s;
+    min-width:max-content;
+    position:fixed;
+    left: -13rem;
+    box-shadow: 0px 0px 25px 1px #24252A;
+    border-bottom-right-radius: 1rem;
+}
+#sidebox:hover{
+    left: 0px;
+}
+.sidebar_li.active{
+    background-color: #004ecb;
+}
+.sidebar_links{
+    background: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    min-width: max-content;
+}
+.sidebar_pre{
+    background: transparent;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.sidebar_li{
+    text-align:right;
+    padding: 1rem 2rem 1rem 2rem;
+    background: transparent;
+    backdrop-filter: blur(2rem);
+}
+.highlight{
+    color: var(--secondaryColor);
+    border-bottom: 1px solid #ECF0F1;
+    font-size: larger;
+    text-shadow: 0px 0px 10px var(--secondaryColor);
+    padding: 2%;
+    text-align: center;
+    border-radius: 15px;
+}
+.TEXT1{
+    padding: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow: 0px 0px 25px 1px #2a2824;
+    margin-left: 20rem;
+    margin-right: 20rem;
+    border: 0.05rem solid #2a2824;
+    font-size: 1.2rem;
+    background: transparent;
+    backdrop-filter: blur(25px);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    border-radius: 25px;
+}
+@media screen and (max-width: 650px){
+    .TEXT1{
+        margin-right: 2rem;
+        margin-left: 2rem;
+    }
+}
+.buttoncontainer1{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+.button1{
+    letter-spacing: 0.1rem;
+    font-family: TitleFont;
+    padding: 1%;
+    min-width: max-content;
+    width: 20%;
+    border-color: #24252A;
+    border-radius: 15px;
+    /* font-weight: 600; */
+    font-size: 1.5rem;
+    transition: all 0.5s;
+}
+.button1:hover{
+    /* background-color: var(--secondaryColor); */
+    box-shadow: 0px 0px 15px 1px #2a2824;
+}
+#home{
+    height: max-content;
+    min-height: 800px;
+    /* background: linear-gradient(-45deg,rgb(255, 55, 55),rgb(21, 0, 255)); */
+    background-image: url(red2.jpg);
+    background-size: cover;
+}
+#sjf{
+    height: 100%;
+}
+#project2{
+    height: 100%;
+}
+#project3{
+    height: 100%;
+}
+#project4{
+    height: 100%;
+}

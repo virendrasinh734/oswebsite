@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+</head>
+<body>
+    <h1>My Website</h1>
+    <form method="GET" action="/simulate">
+        <input type="submit" value="Simulate">
+    </form>
+    <hr>
+    <div id="data1"></div>
+    <div id="data2"></div>
+    
+
+    <!-- add more divs for other variables and arrays -->
+
+    <!-- <script>
+        setInterval(function() {
+            $.getJSON('/data', function(data) {
+                $('#array1').text(data.array1);
+                // update other divs for other variables and arrays
+            });
+        }, 1000); // call the /data route every 1000 milliseconds (1 second)
+    </script> -->
+    <script>
+        function get_states(){
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/data');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Parse the JSON response
+                    var data = JSON.parse(xhr.responseText);
+                    var result=[]
+                    for(var i in data){
+                        result.push([i, data [i]]);
+                    }
+                    let r=result[0]
+                    // Update the HTML elements with the data
+                    console.log(data)
+                    document.getElementById('data1').innerHTML = r[1][0];
+                    document.getElementById('data2').innerHTML = r[1][1];
+                    // ...
+                }
+                else {
+                    console.log('Request failed.  Returned status of ' + xhr.status);
+                }
+            };
+            xhr.send();
+        }
+        get_states()
+               
+    </script>
+    <p>{{ output }}</p>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sjfstles.css')}}">
+</head>
+<body>
+<!------------------------------------------------------------------------------------------------>
+    <!--First division (Goback button div) used to position the goBack button-->
+    <div id="DIV1">
+        <button class="buttontype1" onclick="window.location.href='index.html';">GO back</button>
+    </div>
+<!------------------------------------------------------------------------------------------------>
+    <!--Title -->
+    <h1>
+        Shortest Job First Simulator
+    </h1>
+<!------------------------------------------------------------------------------------------------>
+    <!-- Inpute div (Outer box of the main body) used to position all the elements together in a group-->
+    <div id="sfsInput">
+    <!------------------------------------------------------------------------------------------------>
+        <!-- ID BOX
+        (Input: used to get input | span: for the text(for eg:ID,arrivaltime,bursttime) | i:for the white box which expands on click)-->
+        <div class="InputBox">
+            <input id="PID" type="number" required="required">
+            <span>ID</span>
+            <i></i>
+        </div>
+        <!------------------------------------------------------------------------------------------------>
+        <!-- ArrivalTime -->
+        <div class="InputBox">
+            <input id="AT" type="number" required="required">
+            <span>Arrival Time</span>
+            <i></i>
+        </div>
+        <!------------------------------------------------------------------------------------------------>
+        <!-- BurstTime -->
+        <div class="InputBox">
+            <input id="BT" type="number" required="required">
+            <span>Burst Time</span>
+            <i></i>
+        </div>
+        <!------------------------------------------------------------------------------------------------>
+        <!-- Submit button -->
+        <input id="Submit" type="submit" value="Input Values" onclick="addrow()">
+    </div>
+    <div id="tablebuttons">
+        <button class="buttontype1" onclick="resettable()">Reset Table </button>
+        <button class="buttontype1" onclick="data_extractor()">Calculate</button>
+    </div>
+    <div id="Tablediv">
+        <table id="table1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Arrival Time</th>
+                    <th>Burst Time</th>
+                    <th>Completion Time</th>
+                    <th>TurnAround Time</th>
+                    <th>Waiting Time</th>
+                </tr>
+            </thead>
+        </table>
+        <!-- <table id="table2">
+            <thead>
+                <tr>
+                    
+                </tr>
+            </thead>
+        </table> -->
+    </div>
+    <h2 id="gc">GANTT CHART</h2>
+    <div id="container">
+        <div id="chart" style="display:flex; flex-direction: row; margin: 0; height: 50px;"></div>
+    </div>
+    <pre>
+        <div id="average">
+        </div>
+    </pre>
+</body>
+<script src="{{ url_for('static', filename='script.js')}}"></script>
+</html>

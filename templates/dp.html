@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dp.css')}}">
+
+</head>
+<body>
+    <div id="header">
+        <button class="buttontype1">Go Back</button>
+        <button class="buttontype1">Start Simulation</button>
+        <button class="buttontype1">Stop Simulation</button>
+    </div>
+    <div id="ANIM">
+        <div id="tablecontainer">
+            <div id="table1"></div>
+            <div id="p1" class="person" style="left : 4rem; top : 7rem">
+            </div>
+            <div id="p2" class="person" style="left : -4rem; top : 11rem">
+            </div>
+            <div id="p3" class="person" style="left : 6rem; top : 11rem">
+            </div>
+            <div id="p4" class="person" style="left : 3rem; top : 19rem">
+            </div>
+            <div id="p5" class="person" style="left : -9rem; top : 19rem">
+            </div>
+            <div id="p13" class="chopstick" style="left: -3rem; top: 11rem; rotate: 45deg;"></div>
+            <div id="p12" class="chopstick" style="left: -7.5rem; top: 11rem; rotate: -45deg;"></div>
+            <div id="p34" class="chopstick" style="left: -2rem; top: 15rem; rotate: 115deg;"></div>
+            <div id="p25" class="chopstick" style="left: -9rem; top: 15rem; rotate: 65deg;"></div>
+            <div id="p45" class="chopstick" style="left: -6rem; top: 17rem; rotate: 0deg;"></div>
+        </div>
+    </div>
+    <div id="container">
+        <div class="card">
+            <div class="name">NAME: PLAYER1</div>
+            <div class="status" id="00">STATUS: THINKING</div>
+        </div>
+        <div class="card">
+            <div class="name">NAME: PLAYER2</div>
+            <div class="status" id="01">STATUS: THINKING</div>
+        </div>
+        <div class="card">
+            <div class="name">NAME: PLAYER3</div>
+            <div class="status" id="02">STATUS: THINKING</div>
+        </div>
+        <div class="card">
+            <div class="name">NAME: PLAYER4</div>
+            <div class="status" id="03">STATUS: THINKING</div>
+        </div>
+        <div class="card">
+            <div class="name">NAME: PLAYER5</div>
+            <div class="status" id="04">STATUS: THINKING</div>
+        </div>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='script2.js')}}"></script>
+    
+    
+
+</html>    

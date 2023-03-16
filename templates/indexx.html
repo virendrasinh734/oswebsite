@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body> 
+    <nav id="sidebox">
+        <ul style="background: transparent; list-style: none;">
+            <li class="sidebar_li">
+                <a href="#home" class="sidebar_links"><pre class="sidebar_pre">Home:      H</pre></a>
+            </li>
+            <li class="sidebar_li">
+                <a href="#sjf" class="sidebar_links"><pre class="sidebar_pre">Shortest Job First:   SJF</pre></a>
+            </li>
+            <li class="sidebar_li">
+                <a href="#project2" class="sidebar_links"><pre class="sidebar_pre">semaphore:      S</pre></a>
+            </li>
+            <li class="sidebar_li">
+                <a href="#project3" class="sidebar_links"><pre class="sidebar_pre">Project:      3</pre></a>
+            </li>
+            <li class="sidebar_li">
+                <a href="#project4" class="sidebar_links"><pre class="sidebar_pre">Project:      4</pre></a>
+            </li>
+            <li class="sidebar_li">
+                <a class="sidebar_links" id="about">About us</a>
+            </li>
+        </ul>
+    </nav>
+    <div id="aboutus">
+        <ul style="background: transparent;">
+            <li class="abouttext">TEAM 03</li>
+            <li class="abouttext">TEAM Members: </li>
+            <li class="abouttext">Meet</li>
+            <li class="abouttext">Virendra</li>
+            <li class="abouttext">Siddhant</li>
+            <li class="abouttext">Shubh</li>
+        </ul>
+    </div>
+    <!-- ------------------------------------------------------------------ -->
+    <section id="home">
+        <div class="title">OS Project</div>
+        <div class="TEXT1" style="background: transparent;">
+            <div style="height: 50px; background: transparent;"></div>
+            Greetings!!
+            <br><br>
+            Underneath lies the presentation of a project that shall showcase the implementation of various Operating
+            System Algorithms. There are four such simulations that exist alongside the theory that pertains to them. The
+            simulations include, Shortest Job First Algorithm, Dining philosophers'problem with semaphore, Look/C-look disk scheduling,FIFO.
+            <br><br>
+            The simulations showcase how the algorithms opt for a particular task above the other with respect to their
+            specifications.
+            <div class="buttoncontainer1" style="background: transparent;">
+                <button class="button1" onclick="window.location.href='#sjf'">Check Out</button>
+            </div>
+        </div>
+    </section>
+    <!-- ------------------------------------------------------------------ -->
+    <section id="sjf">
+        <div class="title">Shortest Job First</div>
+        <!-- <div style="height: 50px;"></div> -->
+        <div class="TEXT1" style="text-align: justify;">
+            The shortest job first (SJF) or shortest job next, is a scheduling policy that selects the waiting process with the
+            smallest execution time to execute next. SJN, also known as Shortest Job Next (SJN), can be preemptive or
+            non-preemptive.<br><br>
+            <div class="highlight">Characteristics of SJF Scheduling:</div>
+            <br>
+            -Shortest Job first has the advantage of having a minimum average waiting time among all scheduling
+            algorithms.<br>
+            -It is a Greedy Algorithm.<br>
+            -It may cause starvation if shorter processes keep coming. This problem can be solved using the concept of
+            aging.<br>
+            It is practically infeasible as the Operating System may not know burst times and therefore may not sort
+            them. While it is not possible to predict execution time, several methods can be used to estimate the
+            execution time for a job, such as a weighted average of previous execution times.<br><br>
+            SJF can be used in specialized environments where accurate estimates of running time are available.
+        </div>
+        <div class="buttoncontainer1">
+            <button class="button1" onclick="window.location.href='sjf.html'">Simulator</button>
+            <button class="button1" href="#project2">Next Project</button>
+        </div>
+        
+    </section>
+    <!-- ------------------------------------------------------------------ -->
+    <section id="project2">
+        <div class="title">Dining philosopher's problem with semaphore</div>
+        <!-- <div style="height: 50px;"></div> -->
+        <div class="TEXT1" style="text-align: justify;">
+            The shortest job first (SJF) or shortest job next, is a scheduling policy that selects the waiting process with the
+            smallest execution time to execute next. SJN, also known as Shortest Job Next (SJN), can be preemptive or
+            non-preemptive.<br><br>
+            <div class="highlight">Characteristics of SJF Scheduling:</div>
+            <br>
+            -Shortest Job first has the advantage of having a minimum average waiting time among all scheduling
+            algorithms.<br>
+            -It is a Greedy Algorithm.<br>
+            -It may cause starvation if shorter processes keep coming. This problem can be solved using the concept of
+            aging.<br>
+            It is practically infeasible as the Operating System may not know burst times and therefore may not sort
+            them. While it is not possible to predict execution time, several methods can be used to estimate the
+            execution time for a job, such as a weighted average of previous execution times.<br><br>
+            SJF can be used in specialized environments where accurate estimates of running time are available.
+        </div>
+        <div class="buttoncontainer1">
+            <button class="button1" onclick="window.location.href='dp.html'">Simulator</button>
+        </div>
+    </section>
+    <!-- ------------------------------------------------------------------ -->
+    <section id="project3" style="display:none;">
+        <div style="height: 50px;"></div>
+        <div class="TEXT1" style="text-align: justify;">
+            <div class="title">Projeect 3</div>
+            The shortest job first (SJF) or shortest job next, is a scheduling policy that selects the waiting process with the
+            smallest execution time to execute next. SJN, also known as Shortest Job Next (SJN), can be preemptive or
+            non-preemptive.<br><br>
+            <div class="highlight">Characteristics of SJF Scheduling:</div>
+            <br>
+            -Shortest Job first has the advantage of having a minimum average waiting time among all scheduling
+            algorithms.<br>
+            -It is a Greedy Algorithm.<br>
+            -It may cause starvation if shorter processes keep coming. This problem can be solved using the concept of
+            aging.<br>
+            It is practically infeasible as the Operating System may not know burst times and therefore may not sort
+            them. While it is not possible to predict execution time, several methods can be used to estimate the
+            execution time for a job, such as a weighted average of previous execution times.<br><br>
+            SJF can be used in specialized environments where accurate estimates of running time are available.
+        </div>
+        <div class="buttoncontainer1">
+            <button class="button1" onclick="window.location.href='sjf.html'">Simulator</button>
+        </div>
+    </section>
+    <!-- ------------------------------------------------------------------ -->
+    <section id="project4" style="display:none;">
+        <div style="height: 50px;"></div>
+        <div class="TEXT1" style="text-align: justify;">
+            <div class="title">Projeect 4</div>
+            The shortest job first (SJF) or shortest job next, is a scheduling policy that selects the waiting process with the
+            smallest execution time to execute next. SJN, also known as Shortest Job Next (SJN), can be preemptive or
+            non-preemptive.<br><br>
+            <div class="highlight">Characteristics of SJF Scheduling:</div>
+            <br>
+            -Shortest Job first has the advantage of having a minimum average waiting time among all scheduling
+            algorithms.<br>
+            -It is a Greedy Algorithm.<br>
+            -It may cause starvation if shorter processes keep coming. This problem can be solved using the concept of
+            aging.<br>
+            It is practically infeasible as the Operating System may not know burst times and therefore may not sort
+            them. While it is not possible to predict execution time, several methods can be used to estimate the
+            execution time for a job, such as a weighted average of previous execution times.<br><br>
+            SJF can be used in specialized environments where accurate estimates of running time are available.
+        </div>
+        <div class="buttoncontainer1">
+            <button class="button1" onclick="window.location.href='sjf.html'">Simulator</button>
+        </div>
+    </section>
+    <!-- ------------------------------------------------------------------ -->
+</body>
+<script>
+    const sectionAll = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll',()=>{
+        const scrollY = window.pageYOffset;
+        sectionAll.forEach((current)=>{
+            const sectioHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop-200;
+            const sectionId = current.getAttribute('id');
+            console.log(sectionId);
+            if(scrollY>sectionTop && scrollY<sectionTop+sectioHeight){
+                document.querySelector('li a[href*="'+sectionId+'"]').parentElement.classList.add('active');
+                console.log(document.querySelector('li a[href*="'+sectionId+'"]').classList);
+            }
+            else{
+                document.querySelector('li a[href*="'+sectionId+'"]').parentElement.classList.remove('active');
+            }
+        });
+    });
+</script>
+</html>
