@@ -1,6 +1,53 @@
-function sleep(ms){
-    return new Promise(resolve => setTimeout(resolve,ms));
+
+philst=[];
+mealst=[];
+cholst=[];
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
+async function get_states(){
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/data');
+    xhr.onload = async function() {
+        if (xhr.status === 200) {
+            // Parse the JSON response
+            var data = JSON.parse(xhr.responseText);
+            var result=[]
+            philst=data["array1"];
+            mealst=data["array2"];
+            cholst=data["array3"];
+            console.log(cholst);
+            for(var i in data){
+                result.push([i, data [i]]);
+            }
+            
+            
+            let r=result[0]
+            // philst=r[0];
+            // mealst=r[1];
+            // cholst=r[2];
+            console.log(r);
+            // Update the HTML elements with the data
+            // console.log(data);
+            for(let l=0;l<r[1].length;l++){
+                document.getElementById('00').innerHTML = r[1][l][0];
+                document.getElementById('01').innerHTML = r[1][l][1];
+                document.getElementById('02').innerHTML = r[1][l][2];
+                document.getElementById('03').innerHTML = r[1][l][3];
+                document.getElementById('04').innerHTML = r[1][l][4];
+                await sleep(1000);
+                }
+            
+            // ...
+        }
+        else {
+            console.log('Request failed.  Returned status of ' + xhr.status);
+        }
+    };
+    xhr.send();
+}
+
+get_states()
 async function animm(){
         //initail wait
         await sleep(1000);
@@ -183,39 +230,3 @@ function ChopsickToTable(stick){
         }
     }
 }
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-async function get_states(){
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/data');
-    xhr.onload = async function() {
-        if (xhr.status === 200) {
-            // Parse the JSON response
-            var data = JSON.parse(xhr.responseText);
-            var result=[]
-            for(var i in data){
-                result.push([i, data [i]]);
-            }
-            let r=result[0]
-            // Update the HTML elements with the data
-            console.log(data)
-            for(let l=0;l<r[1].length;l++){
-                document.getElementById('00').innerHTML = r[1][l][0];
-                document.getElementById('01').innerHTML = r[1][l][1];
-                document.getElementById('02').innerHTML = r[1][l][2];
-                document.getElementById('03').innerHTML = r[1][l][3];
-                document.getElementById('04').innerHTML = r[1][l][4];
-                await sleep(1000);
-                }
-            
-            // ...
-        }
-        else {
-            console.log('Request failed.  Returned status of ' + xhr.status);
-        }
-    };
-    xhr.send();
-}
-
-get_states()

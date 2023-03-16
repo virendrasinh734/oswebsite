@@ -4,6 +4,7 @@ import random
 import time
 mealss=[]
 phil_state=[]
+chops=[]
 class Din_Phil:
     def __init__(self,no_of_phil=5, meal_size=3):    
         self.meals=[meal_size for i in range(no_of_phil)]
@@ -50,8 +51,11 @@ def main():
         # print("".join(map(str, dinnning_Philosophers.chop_hold)))
         # dinnning_Philosophers.meals[0]-=1
         lst2=[dinnning_Philosophers.meals[0],dinnning_Philosophers.meals[1],dinnning_Philosophers.meals[2],dinnning_Philosophers.meals[3],dinnning_Philosophers.meals[4]]
+        lst3=[dinnning_Philosophers.chop_hold[i] for i in range(0,5)]
         phil_state.append(lst)
         mealss.append(lst2)
+        chops.append(lst3)
+
         #print("".join("{:3d} ".format(m) for m in dinnning_Philosophers.meals)," : ",str(sum(dinnning_Philosophers.meals)))
         time.sleep(0.1)
     for p in phil_arr:
@@ -66,7 +70,9 @@ def main():
 def get_data():
     # update variables and arrays here
     data = {
-        'array1':phil_state
+        'array1':phil_state,
+        'array2':mealss,
+        'array3':chops
         # add more variables and arrays here
     }
     return data
