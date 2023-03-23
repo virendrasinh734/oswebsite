@@ -1,7 +1,3 @@
-@font-face {
-    font-family: "TitleFont";
-    src: url("cur.ttf");
-}
 :root{
     --secondaryColor: #ECF0F1;
 }
@@ -12,7 +8,7 @@ html{
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
-    background-color: #393939;
+    background-color: #24252A;
     color: #ECF0F1;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -20,18 +16,73 @@ body{
     overflow-x: hidden;
 }
 .title{
-    letter-spacing: 0.5rem;
-    font-family: TitleFont;
+    font-family: 'Times New Roman', Times, serif;
     text-align: center;
     margin: 0px 25% 45px 25%;
     font-size: 2rem;
+    padding: 1%;
     backdrop-filter: blur(5rem);
     background: transparent;
+    /* background: linear-gradient(45deg,red,#004ecb); */
     color: var(--secondaryColor);
-    box-shadow: 0px 0px 15px 1px #24252A;
+    /* box-shadow: 0px 0px 20px 1px black; */
+    border: 1px solid white;
+    border-top: none;
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
-    /* font-weight: 600; */
+    font-weight: 600;
+}
+.highlight{
+    color: var(--secondaryColor);
+    border-bottom: 1px solid white;
+    background-color: white;
+    font-size: larger;
+    padding: 1%;
+    margin: 1%;
+    color: #24252A;
+    text-align: center;
+    /* background: transparent; */
+    box-shadow: 0px 0px 15px 1px #004ecb;
+    border-radius: 15px;
+}
+.highlight2{
+    color: red;
+}
+.TEXT1{
+    padding: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: 0px 0px 25px 1px #24252A;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    border: 0.05rem solid #000830;
+    font-size: 1.5rem;
+    background-color: #24252A;
+    /* backdrop-filter: blur(25px); */
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    justify-content: center;
+    border-radius: 25px;
+}
+.TEXT2{
+    padding: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: 0px 0px 25px 1px #2a2824;
+    border: 0.05rem solid #2a2824;
+    font-size: 1.2rem;
+    background: transparent;
+    backdrop-filter: blur(25px);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 50rem;
+    border-radius: 25px;
+}
+.TEXT2:first-of-type{
+    margin-left:5rem
+}
+.TEXT2:last-of-type{
+    margin-right :5rem
 }
 .abouttext{
     font-size: larger;
@@ -41,12 +92,16 @@ body{
     padding: 1rem;
     color: var(--secondaryColor);
 }
+#about{
+    display: flex;
+    align-items:flex-start;
+}
 #aboutus{
     padding-top: 1rem;
     padding-right: 1rem;
     padding-left: 1rem;
     padding-bottom: 1rem;
-    border: 0.1rem solid #24252A;
+    border: 0.1rem solid #a2a2a2;
     backdrop-filter: blur(2rem);
     background: transparent;
     border-left: none;
@@ -59,26 +114,22 @@ body{
     border-bottom-right-radius: 1rem;
     border-top-right-radius: 1rem;
 }
-#about{
-    display: none;
-}
-body:has(#sidebox:hover) #about{
-    display: block;
-}
+
 body:has(#about:hover) #aboutus{
     left: 0rem;
 }
+
 #sidebox{
     /* background-color: #ECF0F1; */
     backdrop-filter: blur(2rem);
     z-index: 13;
     background: transparent;
-    border: 0.1rem solid #24252A;
+    border: 0.05rem solid #ffffff;
     border-top: none;
     transition: all 0.1s;
     min-width:max-content;
     position:fixed;
-    left: -13rem;
+    left: -12rem;
     box-shadow: 0px 0px 25px 1px #24252A;
     border-bottom-right-radius: 1rem;
 }
@@ -101,39 +152,34 @@ body:has(#about:hover) #aboutus{
 }
 .sidebar_li{
     text-align:right;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 1rem 1rem 1rem 1rem;
     background: transparent;
     backdrop-filter: blur(2rem);
-}
-.highlight{
-    color: var(--secondaryColor);
-    border-bottom: 1px solid #ECF0F1;
-    font-size: larger;
-    text-shadow: 0px 0px 10px var(--secondaryColor);
-    padding: 2%;
-    text-align: center;
-    border-radius: 15px;
-}
-.TEXT1{
-    padding: 1rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    box-shadow: 0px 0px 25px 1px #2a2824;
-    margin-left: 20rem;
-    margin-right: 20rem;
-    border: 0.05rem solid #2a2824;
-    font-size: 1.2rem;
-    background: transparent;
-    backdrop-filter: blur(25px);
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    border-radius: 25px;
 }
 @media screen and (max-width: 650px){
     .TEXT1{
         margin-right: 2rem;
         margin-left: 2rem;
+    }
+    #sidebox{
+        left: -9rem;
+    }
+    #look{
+        flex-direction: column;
+    }
+    .TEXT2{
+        margin-right: 2rem;
+        margin-left: 2rem;
+        width: auto;
+    }
+    .TEXT2:first-of-type{
+        margin-left:2rem
+    }
+    .TEXT2:last-of-type{
+        margin-right :2rem
+    }
+    .sidebar_pre{
+        font-size: 0.7rem;
     }
 }
 .buttoncontainer1{
@@ -143,22 +189,30 @@ body:has(#about:hover) #aboutus{
     margin-bottom: 50px;
     display: flex;
     justify-content: center;
+    background: transparent;
 }
 .button1{
     letter-spacing: 0.1rem;
-    font-family: TitleFont;
+    font-family: 'Times New Roman', Times, serif;
     padding: 1%;
     min-width: max-content;
     width: 20%;
-    border-color: #24252A;
+    /* border-color: #24252A; */
+    /* background: transparent; */
+    background-color: rgb(190, 0, 0);
+    /* box-shadow: 0px 0px 15px 1px rgb(190, 0, 0); */
+    animation: buton 5s ease infinite ;
     border-radius: 15px;
+    /* border: 1px solid white; */
     /* font-weight: 600; */
+    /* border: none; */
     font-size: 1.5rem;
     transition: all 0.5s;
+    cursor: pointer;
 }
 .button1:hover{
     /* background-color: var(--secondaryColor); */
-    box-shadow: 0px 0px 15px 1px #2a2824;
+    box-shadow: 0px 0px 15px 1px rgb(190, 0, 0);
 }
 #home{
     height: max-content;
@@ -176,6 +230,18 @@ body:has(#about:hover) #aboutus{
 #project3{
     height: 100%;
 }
+#look{
+    display: flex;
+    /* flex-direction: row; */
+}
 #project4{
     height: 100%;
+}
+#hiddendp{
+    background: transparent;
+    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

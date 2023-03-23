@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='look.css')}}">
+    <script src="{{ url_for('static', filename='page.js')}}" defer></script>
+</head>
+<body>
+<!------------------------------------------------------------------------------------------------>
+    <!--First division (Goback button div) used to position the goBack button-->
+    <div id="DIV1">
+        <button class="buttontype1" onclick="window.location.href='index.html';">GO back</button>
+    </div>
+<!------------------------------------------------------------------------------------------------>
+    <!--Title -->
+    <h1>
+        FCFS simulator
+    </h1>
+    <div id="head">
+        <!-- <div id="togglecontainer">
+            <div class="togglebutton">
+                <a class="toggletext active" id="look" href="javascript:LookSwitch()">LOOK</a>
+                <a class="toggletext" id="clook" href="javascript:ClookSwitch()">CLOOK</a>
+            </div>
+        </div> -->
+        <div class="InputBox">
+            <input id="PID" type="number" required="required">
+            <span>Capacity</span>
+            <i></i>
+        </div>
+        <button class="buttontype1" id="HeadIndex" onclick="eLock()">SET</button>
+        <button class="buttontype1" id="HeadIndex" onclick="UnLock()">RESET</button>
+    </div>
+<!------------------------------------------------------------------------------------------------>
+    <!-- Inpute div (Outer box of the main body) used to position all the elements together in a group-->
+    <div id="sfsInput">        
+        <!------------------------------------------------------------------------------------------------>
+        <!-- pid -->
+        <!-- <div class="InputBox">
+            <input id="pid" type="number" required="required">
+            <span>PID</span>
+            <i></i>
+        </div> -->
+        <!------------------------------------------------------------------------------------------------>
+        <!-- pindex -->
+        <div class="InputBox">
+            <input id="pindex" type="number" required="required">
+            <span>Page</span>
+            <i></i>
+        </div>
+        <!------------------------------------------------------------------------------------------------>
+        <!-- Submit button -->
+        <input id="Submit" type="submit" value="Input Values" onclick="InsertRow()">
+    </div>
+    <!------------------------------------------------------------------------------------------------>
+    <!-- TABLE DIV -->
+    <div id="Tablediv">
+        <table id="table1">
+            <thead>
+                <tr>
+                    <th>Pages</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div id="caldiv">
+        <!-- <div id="togglecontainer">
+            <div class="togglebutton">
+                <a class="toggletext active" id="left" href="javascript:LeftSwitch()">LEFT</a>
+                <a class="toggletext" id="right" href="javascript:RightSwitch()">RIGHT</a>
+            </div>
+        </div> -->
+        <button class="buttontype1" onclick="Calculate()">Calculate</button>
+    </div>
+    <div id="answercontainer">
+        <div id="tot"></div>
+        <div id="seq"></div>
+    </div>
+    <!-- <div id="plotcontainer">
+        <div id="myPlot" style="width:100%;max-width:700px"></div>
+    </div> -->
+    
+</body>
+
+</html>

@@ -1,56 +1,259 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
 </head>
 <body>
-    <h1>My Website</h1>
-    <form method="GET" action="/simulate">
-        <input type="submit" value="Simulate">
-    </form>
-    <hr>
-    <div id="data1"></div>
-    <div id="data2"></div>
-    
-
-    <!-- add more divs for other variables and arrays -->
-
-    <!-- <script>
-        setInterval(function() {
-            $.getJSON('/data', function(data) {
-                $('#array1').text(data.array1);
-                // update other divs for other variables and arrays
-            });
-        }, 1000); // call the /data route every 1000 milliseconds (1 second)
-    </script> -->
-    <script>
-        function get_states(){
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '/data');
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    // Parse the JSON response
-                    var data = JSON.parse(xhr.responseText);
-                    var result=[]
-                    for(var i in data){
-                        result.push([i, data [i]]);
-                    }
-                    let r=result[0]
-                    // Update the HTML elements with the data
-                    console.log(data)
-                    document.getElementById('data1').innerHTML = r[1][0];
-                    document.getElementById('data2').innerHTML = r[1][1];
-                    // ...
-                }
-                else {
-                    console.log('Request failed.  Returned status of ' + xhr.status);
-                }
-            };
-            xhr.send();
-        }
-        get_states()
-               
-    </script>
-    <p>{{ output }}</p>
+    <nav id="sidebox">
+        <ul style="background: transparent; list-style: none;">
+            <li class="sidebar_li">
+                <a href="#home" class="sidebar_links"><pre class="sidebar_pre">Home:      H</pre></a>
+            </li>
+            <li class="sidebar_li">
+                <a href="#sjf" class="sidebar_links"><pre class="sidebar_pre">Shortest Job First:   #1</pre></a>
+            </li>
+            <li class="sidebar_li">
+                <a href="#project2" class="sidebar_links"><pre class="sidebar_pre">Semaphores:      #2</pre></a>
+            </li>
+            <li class="sidebar_li">
+                <a href="#project3" class="sidebar_links"><pre class="sidebar_pre">Look/Clook      #3</pre></a>
+            </li>
+            <li class="sidebar_li">
+                <a href="#project4" class="sidebar_links"><pre class="sidebar_pre">Project4:      #4</pre></a>
+            </li>
+            <li class="sidebar_li" id="about">
+                <a class="sidebar_links">About us</a>
+            </li>
+        </ul>
+    </nav>
+    <div id="aboutus">
+        <ul style="background: transparent;">
+            <li class="abouttext">TEAM 03</li>
+            <li class="abouttext">TEAM Members: </li>
+            <!-- <li class="abouttext">Meet</li> -->
+            <li class="abouttext">Virendra</li>
+            <!-- <li class="abouttext">Siddhant</li> -->
+            <li class="abouttext">Shubh</li>
+        </ul>
+    </div>
+    <!-- ------------------------------------------------------------------ -->
+    <section id="home">
+        <!-- <img src="{{ url_for('static', filename='download.jpeg')}}"> -->
+        
+        <div class="title">OS Project</div>
+        <div class="TEXT1" style="background: transparent; backdrop-filter: blur(5rem);">
+            <!-- <h1>Long Live The Fuhrer</h1> -->
+            <div style="height: 50px; background: transparent;"></div>
+            Greetings!!
+            <br><br>
+            Underneath lies the presentation of a project that shall showcase the implementation of various Operating
+            System Algorithms. There are four such simulations that exist alongside the theory that pertains to them. The
+            simulations include, Shortest Job First Algorithm, Dining philosophers'problem with semaphore, Look/C-look disk scheduling,FIFO.
+            <br><br>
+            The simulations showcase how the algorithms opt for a particular task above the other with respect to their
+            specifications.
+            <div class="buttoncontainer1" style="background: transparent;">
+                <button class="button1" onclick="window.location.href='#sjf'">Check Out</button>
+            </div>
+        </div>
+    </section>
+    <!-- ------------------------------------------------------------------ -->
+    <div style="height: 5rem; background-color: white;"></div>
+    <section id="sjf">
+        <div class="title">Shortest Job First</div>
+        <div class="buttoncontainer1">
+            <button class="button1" onclick="window.location.href='/Sjf'">Simulator</button>
+            <button class="button1" onclick="window.location.href='#project2'">Next Project</button>
+        </div>
+        <!-- <div style="height: 50px;"></div> -->
+        <div class="TEXT1" style="text-align: justify;">
+            -> The shortest job first (SJF) or shortest job next, is a scheduling policy that selects the waiting process with the
+            smallest execution time to execute next. SJN, also known as Shortest Job Next (SJN), can be preemptive or
+            non-preemptive.<br><br>
+            <div class="highlight">Algorithm SJF Scheduling:</div>
+            <br>
+            1. Sort all the processes according to the arrival time. 
+            <br><br>
+            2. Then select that process that has minimum arrival time and minimum Burst time.
+            <br><br>
+            3. After completion of the process make a pool of processes that arrives afterward till the completion of the previous process and select that process among the pool which is having minimum Burst time. 
+            <div class="highlight">Characteristics of SJF Scheduling:</div>
+            <br>
+            -Shortest Job first has the advantage of having a minimum average waiting time among all scheduling
+            algorithms.<br>
+            -It is a Greedy Algorithm.<br>
+            -It may cause starvation if shorter processes keep coming. This problem can be solved using the concept of
+            aging.<br><br>
+            -> It is practically infeasible as the Operating System may not know burst times and therefore may not sort
+            them. While it is not possible to predict execution time, several methods can be used to estimate the
+            execution time for a job, such as a weighted average of previous execution times.<br>
+            SJF can be used in specialized environments where accurate estimates of running time are available.
+            <br><br>
+            ***In non-preemptive SJF algorithms, processes are resolved in ascending order of their burst times.
+            <br><br>
+            ***In Preemptive SJF, if another process arrives with an even shorter burst time after the process with the shortest burst time and arrival time has been allotted CPU time, the CPU cycle shall be allocated to the process with the shorter burst time.
+        </div>        
+    </section>
+    <div style="height: 5rem; background-color: white;"></div>
+    <!-- ------------------------------------------------------------------ -->
+    <section id="project2">
+        <div class="title">Dining philosopher's problem with semaphore</div>
+        <div class="buttoncontainer1">
+            <button class="button1" onclick="window.location.href='/dinningP'">Simulator</button>
+            <button class="button1" onclick="window.location.href='#project3'">Next Project</button>
+        </div>
+        <!-- <div style="height: 50px;"></div> -->
+        <div class="TEXT1" style="text-align: justify;">
+            -> In 1965, Djikstra completed a synchronisation problem that he calls the dining philosophers problem. Dining Philosophers Problem is one of the classic problems in the synchronisation
+            <br>
+            <br>
+            Dining Philosophers Problem describes a situation where five philosophers are sat around a table and have a chopstick each to their left, thus implying each one of them would have one chopstick each on either side of theirs whilst the table would have a total of five chopsticks. In the centre of the table, a bowl with food has been placed. The conditions applied in this situation is that any philosopher can only eat the food if they have picked up both the chopsticks. They will pick the chopsticks up one at a time but can only eat when they have a chopstick in both their hands. If the philosopher is not eating, then they shall go into a thinking state.
+            <br><br>
+            Threads and semaphores have been implemented to synchronise the current problem. A semaphore is a variable or abstract data type used to control access to a common resource by multiple threads and avoid critical section problems in a concurrent system such as a multitasking operating system. Semaphores are a type of synchronisation primitive. Semaphores are a useful tool in the prevention of race conditions; however, their use is not a guarantee that a program is free from these problems. Semaphores which allow an arbitrary resource count are called counting semaphores, while semaphores which are restricted to the values 0 and 1 (or locked/unlocked, unavailable/available) are called binary semaphores and are used to implement locks.
+            <br><br>
+            <button class="button1" onclick="hiddendp()">read more...</button>
+            <div id="hiddendp" style="display: none;">
+                <div class="highlight" >Advantages of Synchronisation as in Dining Philosophers Problem:</div>
+                
+                <br><br>
+                It's particularly critical in a multi-process system where multiple processes are executing at the same time and trying to access the very same shared resource or data.
+                <br><br>
+                This could lead to discrepancies in data sharing. As a result, modifications implemented by one process may or may not be reflected when the other processes access the same shared data. The processes must be synchronised with one another to avoid data inconsistency.
+                <br><br>
+                And the Dining Philosophers Problem is a typical example of limitations in process synchronisation in systems with multiple processes and limited resources.
+                <br><br>
+                <div class="highlight">Deadlock</div>
+                <br><br>
+                The process is called deadlock if the process of waiting for a particular event that will never happen. A set of processes unconditioned deadlock when every process that is in the collection of waiting for an event that can only be done other processes are also in the collection. The process of waiting for events that will never happen. Deadlock occurs when processes attempt to access exclusive resources. 
+                <br><br>
+                A deadlock condition in the simulation dining philosophers problem occurs when at one time; all the philosophers get hungry simultaneously, and all philosophers take the chopsticks in his left hand. By the time the philosopher will take the chopsticks in the right hand, then there is a deadlock condition since all philosophers will be waiting for chopsticks on the right. The process is said to be experiencing starvation when the processes are waiting for the allocation of resources to infinity, while the other processes can obtain resource allocation. Starvation caused bias in policy or strategy of resource allocation. This condition should be avoided because it is unfair, but the desired avoidance is done as efficiently as possible.
+                <br><br>
+                <div class="highlight">Solution</div>
+                <br><br>
+                To solve the Dining Philosophers Problem, we can implement various solutions, herein we have implemented a solution that dictates that each philosopher attempts to pick up a chopstick to their left. If Philosopher 1 can successfully pick the chopstick to their left (Chopstick 1) up, then they shall attempt to pick the chopstick to their right (Chopstick 2)  up. If they can pick the chopstick to their right (Chopstick 2)  up, then the philosopher (Philosopher 1) begins to eat. If the philosopher (Philosopher 1)  is unable to pick the chopstick (Chopstick 2) to their right up, then they drop the chopstick that they had already picked up, the one to their left (Chopstick 1) as well and go back to their thinking state. Each of the philosophers does the same process, and the dropping of both chopsticks helps us avoid the deadlock discussed earlier. The implementation of semaphores helps to note if the chopsticks are picked up or not in this synchronised process of the five philosophers attempting to eat the rice available by the process of holding the two chopsticks on each of their sides.
+            </div>
+        </div>
+    </section>
+    <div style="height: 5rem; background-color: white;"></div>
+    <!-- ------------------------------------------------------------------ -->
+    <section id="project3">
+        <div class="title">Look / CLook</div>
+        <div class="buttoncontainer1">
+            <button class="button1" onclick="window.location.href='/look'">Simulator</button>
+            <button class="button1" onclick="window.location.href='#project4'">Next Project</button>
+        </div>
+        <div class="TEXT1">
+            Disk scheduling is done by operating systems to schedule I/O requests arriving for the disk. Disk scheduling is also known as I/O scheduling.
+            Disk scheduling is important because:
+            <br><br>
+            Multiple I/O requests may arrive by different processes and only one I/O request can be served at a time by the disk controller. Thus other I/O requests need to wait in the waiting queue and need to be scheduled.
+            Two or more requests may be far from each other so can result in greater disk arm movement.
+            Hard drives are one of the slowest parts of the computer system and thus need to be accessed in an efficient manner.
+            <br><br>
+            1.Seek Time: Seek time is the time taken to locate the disk arm to a specified track where the data is to be read or written. So the disk scheduling algorithm that gives minimum average seek time is better.
+            <br><br>
+            2. Rotational Latency: Rotational Latency is the time taken by the desired sector of disk to rotate into a position so that it can access the read/write heads. So the disk scheduling algorithm that gives minimum rotational latency is better.
+            <br><br>
+            3.Transfer Time: Transfer time is the time to transfer the data. It depends on the rotating speed of the disk and number of bytes to be transferred.
+            <br><br>
+            4. Disk Access Time: Disk Access Time is (Seek Time + Rotational Latency + Transfer Time)
+            <br><br>
+        </div>
+        <div id="look">
+            <div class="TEXT2" style="text-align: justify;">
+                <div class="highlight">LOOK algorithm</div>
+                LOOK is the advanced version of SCAN (elevator) disk scheduling algorithm which gives slightly better seek time than any other algorithm in the hierarchy (FCFS->SRTF->SCAN->C-SCAN->LOOK). The LOOK algorithm services request similarly as SCAN algorithm meanwhile it also “looks” ahead as if there are more tracks that are needed to be serviced in the same direction. If there are no pending requests in the moving direction the head reverses the direction and starts servicing requests in the opposite direction.
+                The main reason behind the better performance of LOOK algorithm in comparison to SCAN is because in this algorithm the head is not allowed to move till the end of the disk.
+                <br><br>
+                1. Let Request array represents an array storing indexes of tracks that have been requested in ascending order of their time of arrival. 'head' is the position of disk head.
+                <br><br>
+                2. The initial direction in which the head is moving is given and it services in the same direction.
+                <br><br>
+                3. The head services all the requests one by one in the direction the head is moving.
+                <br><br>
+                4. The head continues to move in the same direction until all the requests in this direction are finished.
+                <br><br>
+                5. While moving in this direction calculate the absolute distance of the track from the head.
+                <br><br>
+                6. Increment the total seek count with this distance.
+                <br><br>
+                7. Currently serviced track position now becomes the new head position.
+                <br><br>
+                8. Go to step 5 until we reach the last request in this direction.
+                <br><br>
+                9. If we reach where no requests are needed to be serviced in this direction, reverse the direction and go to step 3 until all tracks in the request array have not been serviced.
+                <!-- <img src="lok.png" width="500rem" alt="dining philosophers diagram"> -->
+            </div>
+            <div class="TEXT2" style="text-align: justify;">
+                <div class="highlight">CLOOK algorithm</div>
+                C-LOOK is an enhanced version of both SCAN as well as LOOK disk scheduling algorithms. This algorithm also uses the idea of wrapping the tracks as a circular cylinder as C-SCAN algorithm but the seek time is better than C-SCAN algorithm. We know that C-SCAN is used to avoid starvation and services all the requests more uniformly, the same goes for C-LOOK. 
+                <br><br>
+                In this algorithm, the head services requests only in one direction(either left or right) until all the requests in this direction are not serviced and then jumps back to the farthest request on the other direction and service the remaining requests which gives a better uniform servicing as well as avoids wasting seek time for going till the end of the disk.
+                <br><br>
+                1. Let Request array represents an array storing indexes of the tracks that have been requested in ascending order of their time of arrival and head is the position of the disk head.
+                <br><br>
+                2. The initial direction in which the head is moving is given and it services in the same direction.
+                <br><br>
+                3. The head services all the requests one by one in the direction it is moving.
+                <br><br>
+                4. The head continues to move in the same direction until all the requests in this direction have been serviced.
+                <br><br>
+                5. While moving in this direction, calculate the absolute distance of the tracks from the head.
+                <br><br>
+                6. Increment the total seek count with this distance.
+                <br><br>
+                7. Currently serviced track position now becomes the new head position.
+                <br><br>
+                8. Go to step 5 until we reach the last request in this direction.
+                <br><br>
+                9. If we reach the last request in the current direction then reverse the direction and move the head in this direction until we reach the last request that is needed to be serviced in this direction without servicing the intermediate requests.
+                <br><br>
+                10. Reverse the direction and go to step 3 until all the requests have not been serviced.
+                <!-- <img src="clok.png" width="500rem" alt="dining philosophers diagram"> -->
+            </div>
+        </div>
+    </section>
+    <section id="project4">
+        <div class="title">Look / FCFS</div>
+        <div class="buttoncontainer1">
+            <button class="button1" onclick="window.location.href='/fcfs'">Simulator</button>
+        </div>
+    </section>
+    <!-- ------------------------------------------------------------------ -->
 </body>
+<script>
+    var hiddp = document.getElementById("hiddendp");
+    var dpflag = 0;
+    function hiddendp(){
+        if(dpflag==0){
+            hiddp.style.display = "block";
+            dpflag = 1;
+        }
+        else{
+            hiddp.style.display = "none";
+            dpflag = 0;
+        }
+    }
+    const sectionAll = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll',()=>{
+        const scrollY = window.pageYOffset;
+        sectionAll.forEach((current)=>{
+            const sectioHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop-200;
+            const sectionId = current.getAttribute('id');
+            console.log(sectionId);
+            if(scrollY>sectionTop && scrollY<sectionTop+sectioHeight){
+                document.querySelector('li a[href*="'+sectionId+'"]').parentElement.classList.add('active');
+                console.log(document.querySelector('li a[href*="'+sectionId+'"]').classList);
+            }
+            else{
+                document.querySelector('li a[href*="'+sectionId+'"]').parentElement.classList.remove('active');
+            }
+        });
+    });
+</script>
 </html>

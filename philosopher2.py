@@ -2,6 +2,16 @@ from threading import Thread
 from threading import Semaphore
 import random
 import time
+import sqlite3
+# import pymongo
+# myresult = mycursor.fetchall()
+# for row in myresult:
+#   print(row)
+con=sqlite3.connect("phil.db")
+cur=con.cursor()
+temp=100
+# cur.execute("CREATE TABLE philt (sno int primary key, p01 varchar(30),p02 varchar(30),p03 varchar(30),p04 varchar(30),p05 varchar(30));")
+# cur.execute(f"INSERT INTO philt (sno, p01, p02, p03, p04, p05) VALUES ({temp},'think','think','think','think','think');")
 
 mealss=[]
 phil_state=[]
@@ -20,17 +30,17 @@ class Din_Phil:
         if i < 4:
             while not self.stop_flag:
                 self.status[i] = 'Thinking'
-                time.sleep(0.5)
-                self.status[i] = '  _  '
+                time.sleep(random.random()*0.1)
+                self.status[i] = 'Waiting'
                 if self.chopstick[i].acquire(timeout=1):
                     self.chop_hold[i] = 1
                     self.cstat[i] = i + 1
-                    time.sleep(0.5)
+                    time.sleep(random.random()*0.1)
                     if self.chopstick[nxt].acquire(timeout=1):
                         self.chop_hold[i] = 2
                         self.cstat[nxt] = i + 1
                         self.status[i] = 'Eating'
-                        time.sleep(0.5)
+                        time.sleep(random.random()*0.1)
                         self.chopstick[i].release()
                         self.chopstick[nxt].release()
                         self.chop_hold[i] = 0
@@ -39,17 +49,17 @@ class Din_Phil:
         elif i == 4:
             while not self.stop_flag:
                 self.status[i] = 'Thinking'
-                time.sleep(0.5)
+                time.sleep(random.random()*0.1)
                 self.status[i] = '  _  '
                 if self.chopstick[nxt].acquire(timeout=1):
                     self.chop_hold[i] = 1
                     self.cstat[i] = i + 1
-                    time.sleep(0.5)
+                    time.sleep(random.random()*0.1)
                     if self.chopstick[i].acquire(timeout=1):
                         self.chop_hold[i] = 2
                         self.cstat[nxt] = i + 1
                         self.status[i] = 'Eating'
-                        time.sleep(0.5)
+                        time.sleep(random.random()*0.1)
                         self.chopstick[i].release()
                         self.chopstick[nxt].release()
                         self.chop_hold[i] = 0
@@ -67,7 +77,7 @@ def main():
     for p in phil_arr:
         p.start()
 
-    i = 10
+    i = 30
     while i>0:
         print("="*25)
         lst=[dinnning_Philosophers.status[0],dinnning_Philosophers.status[1],dinnning_Philosophers.status[2],dinnning_Philosophers.status[3],dinnning_Philosophers.status[4]]
@@ -82,8 +92,13 @@ def main():
         # mealss.append(lst2)
         chops.append(lst3)
         cst.append(lst4)
+        try: 
+            cur.execute(f"INSERT INTO philt (sno, p01, p02, p03, p04, p05) VALUES ({i},'{lst[0]}','{lst[1]}','{lst[2]}','{lst[3]}','{lst[4]}');")
+            con.commit()
+        except:
+            print("Not able to enter this data")
         #print("".join("{:3d} ".format(m) for m in dinnning_Philosophers.meals)," : ",str(sum(dinnning_Philosophers.meals)))
-        time.sleep(1)
+        time.sleep(0.1)
         i=i-1
     
     dinnning_Philosophers.stop_threads()
@@ -93,11 +108,17 @@ def main():
     for i in range(len(phil_state)):
         print(phil_state[i])
         # print(mealss[i])
-    
+#     for i in range(len(phil_state)):
+#         cur.execute(f"INSERT into philosophers VALUES ({i},{phil_state[i][0]},{phil_state[i][1]},{phil_state[i][2]},{phil_state[i][3]},{phil_state[i][4]}")
+#         conn.commit()
+# conn.close()
+
+
+
     # print(mealss[0])
     # print(mealss[10])
     # print(mealss[20])
-    
+con.commit() 
 def get_data():
     # update variables and arrays here
     data = {
