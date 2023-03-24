@@ -1,14 +1,12 @@
-from flask import Flask,render_template,jsonify
+from flask import Flask,render_template,jsonify,request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import philosopher2
+import fcfs
 app=Flask(__name__)
 
 @app.route('/')
 def index():
-    # ph=philt(s_no=2,p_01="Think",p_02="Think",p_03="Think",p_04="Think",p_05="Think")
-    # db.session.add(ph)
-    # db.session.commit()p
     return render_template('index.html')
 @app.route('/Sjf')
 def Sjf():
@@ -20,35 +18,29 @@ def dinningP():
 def look():
     return render_template('look.html')
 @app.route('/fcfs')
-def fcfs():
+def fcfss():
     return render_template('fcfs.html')
 @app.route('/data')
 def data():
     philosopher2.main()
     data = philosopher2.get_data()
     return jsonify(data)
-# @app.route("/simulate")
-# def simulate():    
-#     output = ""
-#     # Render the template with the output
-#     return render_template("index.html", output=output)
+
+
+@app.route('/process-data', methods=['POST'])
+def process_data():
+    data = request.get_json()
+    input_array = data['inputArrayy']
+    capacity = data['capacityy']
+    
+    # Call your Python function that runs an algorithm on the input_array and capacity
+    result = fcfs.page_faults(input_array, capacity)
+    
+    # Return the result as a JSON response
+    return jsonify(result)
+
 if __name__ == "__main__":
     app.run(host="localhost", port=8000, debug=True)
 
 
-app.config['SQLALCHEMY_DATABASE_URI']="sqlite:///phil.db"
-app.config['SQLALCHEMY_DATABASE_TRACK_MODIFICATIONS']=False
-
-# db=SQLAlchemy(app)
-# class philt(db.Model):
-#     s_no=db.Column(db.Integer,primary_key=True)
-#     p_01= db.Column(db.String(100), nullable =False)
-#     p_02= db.Column(db.String(100), nullable =False)
-#     p_03= db.Column(db.String(100), nullable =False)
-#     p_04= db.Column(db.String(100), nullable =False)
-#     p_05= db.Column(db.String(100), nullable =False)
-#     tim=db.Column(db.DateTime, default=datetime.utcnow)
-
-    # def __repr__(self) -> str:
-    #     return f"{self.p_01} {self.p_02} {self.p_03} {self.p_04} {self.p_05}"
 
