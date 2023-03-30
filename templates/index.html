@@ -222,6 +222,64 @@
         <div class="buttoncontainer1">
             <button class="button1" onclick="window.location.href='/fcfs'">Simulator</button>
         </div>
+        <div class="TEXT1">
+            <br><br>
+            In an operating system that uses paging for memory management, a page replacement algorithm is needed to decide which page needs to be replaced when a new page comes in. 
+            <br><br>
+            Page Fault: A page fault happens when a running program accesses a memory page that is mapped into the virtual address space but not loaded in physical memory. Since actual physical memory is much smaller than virtual memory, page faults happen. In case of a page fault, the Operating System might have to replace one of the existing pages with the newly needed page. Different page replacement algorithms suggest different ways to decide which page to replace. The target for all algorithms is to reduce the number of page faults. 
+            <br><br>
+            First In First Out (FIFO): This is the simplest page replacement algorithm. In this algorithm, the operating system keeps track of all pages in the memory in a queue, the oldest page is in the front of the queue. When a page needs to be replaced, the page in the front of the queue is selected for removal.
+            <br><br>
+            Input:
+            <br><br>
+            pages: an array of integers representing page numbers accessed by the system
+            <br><br>
+            n: the total number of pages in the array
+            <br><br>
+            capacity: the maximum number of pages that can be held in memory at once
+            <br><br>
+            <br><br>
+            Output:
+            <br><br>
+            page_faults: the number of page faults occurred during the simulation
+            <br><br>
+            page_change: an array depicting pages in memory during each iteration
+
+            <br><br>
+            Steps:
+            <br><br>
+            1. Initialise an empty unordered set s to  epresent the current set of pages in memory
+            <br><br>
+            2. Initialise an empty array indexes to store the pages in FIFO manner
+            <br><br>
+            3. Initialise page_faults variable to 0
+            <br><br>
+            4. Loop through each page i in the array pages:
+            <br><br>
+            If the set s has not reached its capacity yet:
+            <br><br><br><br>
+            &#160 &nbsp i. Check if the current page i is not already in the set s 
+            <br><br>
+            &#160 &nbsp ii. If it is not, add it to the set s
+            <br><br>
+            &#160 &nbsp iii. Increment page_faults by 1
+            <br><br>
+            &#160 &nbsp iv. Push the current page i to the end of the indexes array
+            <br><br><br><br>
+            If the set s has already reached its capacity:
+            <br><br>
+            &#160 &nbsp 1. Check if the current page i is not already in the set s
+            <br><br>
+            &#160 &nbsp 2. If it is not, remove the first page from the beginning of the indexes array and the set s
+            <br><br>
+            &#160 &nbsp 3. Add the current page i to the set s
+            <br><br>
+            &#160 &nbsp 4. Push the current page i to the end of the indexes array
+            <br><br>
+            &#160 &nbsp 5. Increment page_faults by 1
+            <br><br>5. Return page_faults and 2D array of page_change
+            <br><br>
+        </div>
     </section>
     <!-- ------------------------------------------------------------------ -->
 </body>

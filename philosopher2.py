@@ -3,10 +3,7 @@ from threading import Semaphore
 import random
 import time
 import sqlite3
-# import pymongo
-# myresult = mycursor.fetchall()
-# for row in myresult:
-#   print(row)
+
 con=sqlite3.connect("phil.db")
 cur=con.cursor()
 temp=100

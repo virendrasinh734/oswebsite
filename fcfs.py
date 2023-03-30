@@ -1,29 +1,26 @@
 import sqlite3
 import os
 
+# checking for write access in current directory
 if os.access(".", os.W_OK):
     print("You have write permissions in this directory")
 else:
     print("You do not have write permissions in this directory")
 
 db_file = 'fcfs.db'
-
+#checking if the database already exists
 if not os.path.exists(db_file):
     # create a new database file if it doesn't exist
     conn = sqlite3.connect(db_file)
     conn.close()
 
-# def insert(data):
-#     c.execute('INSERT INTO fcfs (data) VALUES (?)', (data['my-data'],))
-# inputarr=[1,2,3,4,5,6,6,7,8,3,2,8,2,9]
-# capacity=3
-# l=len(inputarr)
 
-# for i in range(l):
-#     array1.append([0])
 inp_no=0    
+#the main algorithm to implement fcfs page replacement
 def page_faults(inputarr,capacity):
     l=len(inputarr)
+
+    #establishing connection with sqlite database
     conn = sqlite3.connect('fcfs.db')
     c = conn.cursor()
     inp_no=10
@@ -31,6 +28,7 @@ def page_faults(inputarr,capacity):
     c.execute('CREATE TABLE IF NOT EXISTS fcfs (id INTEGER PRIMARY KEY autoincrement, queue text,inp_no integer)')
     conn.commit()
     
+    #inintialising variables and arrays
     sett=[]
     queue=[]
     misshit=[]
@@ -39,12 +37,16 @@ def page_faults(inputarr,capacity):
     hit=0
     array1=[]
     for i in range(l):
+
+        #condition when the queue is not completely filled 
         if len(sett)<capacity:
+            #when the given page is not already present in queue
             if inputarr[i] not in sett:
                 sett.append(inputarr[i])
                 no_of_page_faults+=1
                 queue.append(inputarr[i])
                 misshit.append("miss")
+            #when the given page is already present in queue
             else:
                 hit+=1
                 for j in range (len(queue)):
@@ -53,6 +55,7 @@ def page_faults(inputarr,capacity):
                         queue.append(inputarr[i])
                 misshit.append("hit")
         else:
+
             if(inputarr[i] not in sett):
                 val=queue[0]
                 queue.pop(0)
@@ -61,6 +64,7 @@ def page_faults(inputarr,capacity):
                 queue.append(inputarr[i])
                 no_of_page_faults+=1
                 misshit.append("miss")
+            #when the given page is already present in queue
             else:
                 hit+=1
                 for j in range (len(queue)):
@@ -79,6 +83,7 @@ def page_faults(inputarr,capacity):
         lst=[queue[k] for k in range(len(queue))]
         array1.append(lst)
 
+    #assembling the required data into dictionary for the purpose of returnin
     data = {
         'array1':array1,
         'misshit':misshit,
