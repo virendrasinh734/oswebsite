@@ -10,6 +10,22 @@
     color: #ECF0F1;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+#mainconn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#right
+{
+    /*  */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+#average{
+    margin-top: -15px;
+}
 h1{
     text-align: center;
     font-family: TitleFont;

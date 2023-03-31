@@ -444,7 +444,8 @@ function Calculate(){
           yaxis: {range: [-10, 0], title: "...",
           zerolinecolor: '#24252A',
             zeroline: true,
-            showline: false}
+            showline: false,
+            showticklabels: false}
         };
         Plotly.newPlot("myPlot", data, layout);
         // Display using Plotly

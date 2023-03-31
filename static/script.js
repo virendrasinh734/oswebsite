@@ -111,6 +111,9 @@ function data_extractor(){
 }
 let time=0;
 let free=[];
+let temp1=0;
+let temp2=0;
+let temp3=0;
 //this function would do the scheduling and get the completion time stored in an array which would be returned
 function scheduler(input){
     pid=[];
@@ -185,7 +188,12 @@ function scheduler(input){
                     temp.push(pid[c]);
                     temp.push(bt[c]);
                     items.push(temp);
-
+                    temp1+=Math.floor(Math.random() * 100);
+                    temp2+=Math.floor(Math.random() * 100);
+                    temp3+=Math.floor(Math.random() * 100);
+                    temp1=temp1%255;
+                    temp2=temp2%255;
+                    temp3=temp3%255;
                     ct[c]=clock+bt[c];
                     ta[c]=ct[c]-at[c];
                     wt[c]=ta[c]-bt[c];
@@ -199,7 +207,7 @@ function scheduler(input){
                     divarray[i].appendChild(text); //appending to the smaller box
                     divarray[i].style.display="flex"; //usng flex to automatically move the text
                     divarray[i].style.justifyContent="center"; //moving the text to the right most corner
-                    divarray[i].style.backgroundColor = col[i%2]; //setting color
+                    divarray[i].style.backgroundColor = `rgb(${temp1},${temp2},${temp3})`; //setting color
                     divarray[i].style.border = "0.2px solid white"; //setting border
                     // console.log(completed.length+"    "+(i-count));
                     // console.log("bt"+completed[i-count-1][2]);

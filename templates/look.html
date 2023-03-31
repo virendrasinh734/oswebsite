@@ -7,7 +7,7 @@
     <title>Document</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='look.css')}}">
-    <script src defer="{{ url_for('static', filename='disk.js')}}"></script>
+    <script src ="{{ url_for('static', filename='disk.js')}}"></script>
     
 </head>
 <body>
@@ -38,53 +38,60 @@
     </div>
 <!------------------------------------------------------------------------------------------------>
     <!-- Inpute div (Outer box of the main body) used to position all the elements together in a group-->
-    <div id="sfsInput">        
-        <!------------------------------------------------------------------------------------------------>
-        <!-- pid -->
-        <!-- <div class="InputBox">
-            <input id="pid" type="number" required="required">
-            <span>PID</span>
-            <i></i>
-        </div> -->
-        <!------------------------------------------------------------------------------------------------>
-        <!-- pindex -->
-        <div class="InputBox">
-            <input id="pindex" type="number" required="required">
-            <span>Pindex</span>
-            <i></i>
-        </div>
-        <!------------------------------------------------------------------------------------------------>
-        <!-- Submit button -->
-        <input id="Submit" type="submit" value="Input Values" onclick="InsertRow()">
-    </div>
-    <!------------------------------------------------------------------------------------------------>
-    <!-- TABLE DIV -->
-    <div id="Tablediv">
-        <table id="table1">
-            <thead>
-                <tr>
-                    <th>Pindex</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
-    <div id="caldiv">
-        <div id="togglecontainer">
-            <div class="togglebutton">
-                <a class="toggletext active" id="left" href="javascript:LeftSwitch()">LEFT</a>
-                <a class="toggletext" id="right" href="javascript:RightSwitch()">RIGHT</a>
+    <div id="mainconn">
+        <div id="left">
+            <div id="sfsInput">        
+                <!------------------------------------------------------------------------------------------------>
+                <!-- pid -->
+                <!-- <div class="InputBox">
+                    <input id="pid" type="number" required="required">
+                    <span>PID</span>
+                    <i></i>
+                </div> -->
+                <!------------------------------------------------------------------------------------------------>
+                <!-- pindex -->
+                <div class="InputBox">
+                    <input id="pindex" type="number" required="required">
+                    <span>Pindex</span>
+                    <i></i>
+                </div>
+                <!------------------------------------------------------------------------------------------------>
+                <!-- Submit button -->
+                <input id="Submit" type="submit" value="Input Values" onclick="InsertRow()">
+            </div>
+            <!------------------------------------------------------------------------------------------------>
+            <!-- TABLE DIV -->
+            <div id="Tablediv">
+                <table id="table1">
+                    <thead>
+                        <tr>
+                            <th>Pindex</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div id="caldiv">
+                <div id="togglecontainer">
+                    <div class="togglebutton">
+                        <a class="toggletext active" id="left" href="javascript:LeftSwitch()">LEFT</a>
+                        <a class="toggletext" id="right" href="javascript:RightSwitch()">RIGHT</a>
+                    </div>
+                </div>
+                <button class="buttontype1" onclick="Calculate()">Calculate</button>
             </div>
         </div>
-        <button class="buttontype1" onclick="Calculate()">Calculate</button>
-    </div>
-    <div id="answercontainer">
-        <div id="tot"></div>
-        <div id="seq"></div>
-    </div>
-    <div id="plotcontainer">
-        <div id="myPlot" style="width:100%;max-width:700px"></div>
+        <div id="right">
+            <div id="answercontainer">
+                <div id="tot"></div>
+                <div id="seq"></div>
+            </div>
+            <div id="plotcontainer">
+                <div id="myPlot" style="width:100%;max-width:700px"></div>
+            </div>
+        </div>
+
     </div>
     
 </body>
-<script src="disk.js"></script>
+
 </html>

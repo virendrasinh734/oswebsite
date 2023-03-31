@@ -14,6 +14,7 @@ html{
 }
 body{
     overflow-x: hidden;
+    /* background-image: url(back.jpg) !important; */
 }
 .title{
     font-family: 'Times New Roman', Times, serif;
@@ -67,15 +68,17 @@ body{
 .TEXT2{
     padding: 1rem;
     font-family: 'Times New Roman', Times, serif;
-    box-shadow: 0px 0px 25px 1px #2a2824;
-    border: 0.05rem solid #2a2824;
-    font-size: 1.2rem;
-    background: transparent;
-    backdrop-filter: blur(25px);
+    box-shadow: 0px 0px 25px 1px #24252A;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    border: 0.05rem solid #000830;
+    font-size: 1.5rem;
+    background-color: #24252A;
+    /* backdrop-filter: blur(25px); */
     display: flex;
     flex-direction: column;
-    text-align: center;
-    width: 50rem;
+    /* text-align: center; */
+    justify-content: center;
     border-radius: 25px;
 }
 .TEXT2:first-of-type{
@@ -218,7 +221,7 @@ body:has(#about:hover) #aboutus{
     height: max-content;
     min-height: 800px;
     /* background: linear-gradient(-45deg,rgb(255, 55, 55),rgb(21, 0, 255)); */
-    background-image: url(red2.jpg);
+    background-image: url(back.jpg);
     background-size: cover;
 }
 #sjf{
@@ -226,9 +229,11 @@ body:has(#about:hover) #aboutus{
 }
 #project2{
     height: 100%;
+    background-image: url(back.jpg);
 }
 #project3{
     height: 100%;
+    background-image: url(back.jpg);
 }
 #look{
     display: flex;
@@ -236,6 +241,7 @@ body:has(#about:hover) #aboutus{
 }
 #project4{
     height: 100%;
+    background-image: url(back.jpg);
 }
 #hiddendp{
     background: transparent;

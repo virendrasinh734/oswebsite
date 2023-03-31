@@ -34,54 +34,61 @@
         <button class="buttontype1" id="HeadIndex" onclick="Lock()">SET</button>
         <button class="buttontype1" id="HeadIndex" onclick="UnLock()">RESET</button>
     </div>
-<!------------------------------------------------------------------------------------------------>
-    <!-- Inpute div (Outer box of the main body) used to position all the elements together in a group-->
-    <div id="sfsInput">        
+    <div id="maincon">
+        <div id="left">
+            
         <!------------------------------------------------------------------------------------------------>
-        <!-- pid -->
-        <!-- <div class="InputBox">
-            <input id="pid" type="number" required="required">
-            <span>PID</span>
-            <i></i>
-        </div> -->
-        <!------------------------------------------------------------------------------------------------>
-        <!-- pindex -->
-        <div class="InputBox">
-            <input id="pindex" type="number" required="required">
-            <span>Page</span>
-            <i></i>
-        </div>
-        <!------------------------------------------------------------------------------------------------>
-        <!-- Submit button -->
-        <input id="Submit" type="submit" value="Input Values" onclick="InsertRow()">
-    </div>
-    <!------------------------------------------------------------------------------------------------>
-    <!-- TABLE DIV -->
-    <div class="Tablediv">
-        <table id="table1" class="tableStyle">
-            <thead>
-                <tr>
-                    <th>Pages</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
-    <div id="caldiv">
-        <!-- <div id="togglecontainer">
-            <div class="togglebutton">
-                <a class="toggletext active" id="left" href="javascript:LeftSwitch()">LEFT</a>
-                <a class="toggletext" id="right" href="javascript:RightSwitch()">RIGHT</a>
+            <!-- Inpute div (Outer box of the main body) used to position all the elements together in a group-->
+            <div id="sfsInput">        
+                <!------------------------------------------------------------------------------------------------>
+                <!-- pid -->
+                <!-- <div class="InputBox">
+                    <input id="pid" type="number" required="required">
+                    <span>PID</span>
+                    <i></i>
+                </div> -->
+                <!------------------------------------------------------------------------------------------------>
+                <!-- pindex -->
+                <div class="InputBox">
+                    <input id="pindex" type="number" required="required">
+                    <span>Page</span>
+                    <i></i>
+                </div>
+                <!------------------------------------------------------------------------------------------------>
+                <!-- Submit button -->
+                <input id="Submit" type="submit" value="Input Values" onclick="InsertRow()">
             </div>
-        </div> -->
-        <button class="buttontype1" onclick="Calculate()">Calculate</button>
-    </div>
-    <div id="answercontainer">
-        <div id="pageFaults" style="color: black; background: transparent;"></div>
-    </div>
-    <div class="Tablediv">
-        <table id="final" class="tableStyle">
-
-        </table>
+            <!------------------------------------------------------------------------------------------------>
+            <!-- TABLE DIV -->
+            <div class="Tablediv">
+                <table id="table1" class="tableStyle">
+                    <thead>
+                        <tr>
+                            <th>Pages</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div id="caldiv">
+                <!-- <div id="togglecontainer">
+                    <div class="togglebutton">
+                        <a class="toggletext active" id="left" href="javascript:LeftSwitch()">LEFT</a>
+                        <a class="toggletext" id="right" href="javascript:RightSwitch()">RIGHT</a>
+                    </div>
+                </div> -->
+                <button class="buttontype1" onclick="Calculate()">Calculate</button>
+            </div>
+        </div>
+        <div id="right">
+            <div id="answercontainer">
+                <div id="pageFaults" style="color: black; background: transparent;"></div>
+            </div>
+            <div class="Tablediv">
+                <table id="final" class="tableStyle">
+        
+                </table>
+            </div>    
+        </div>
     </div>
 </body>
 

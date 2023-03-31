@@ -12,6 +12,17 @@ html{
     color: #ECF0F1;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+#maincon{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#right{
+    padding-top:50px;
+    /* font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; */
+}
 h1{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
