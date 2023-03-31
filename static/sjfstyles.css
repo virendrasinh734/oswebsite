@@ -6,7 +6,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #24252A;
+    background-color: #232428;
     color: #ECF0F1;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -25,6 +25,15 @@
 }
 #average{
     margin-top: -15px;
+}
+img{
+    height: 80px;
+    width: 80px;
+}
+body{
+    /* background-image: url("som.jpg");
+    background-repeat:no-repeat;
+    background-size:cover; */
 }
 h1{
     text-align: center;

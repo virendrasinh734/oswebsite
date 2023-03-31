@@ -7,7 +7,7 @@ import sqlite3
 con=sqlite3.connect("phil.db")
 cur=con.cursor()
 temp=100
-# cur.execute("CREATE TABLE philt (sno int primary key, p01 varchar(30),p02 varchar(30),p03 varchar(30),p04 varchar(30),p05 varchar(30));")
+# cur.execute("CREATE TABLE philt (sno integer primary key autoincrement, p01 varchar(30),p02 varchar(30),p03 varchar(30),p04 varchar(30),p05 varchar(30));")
 # cur.execute(f"INSERT INTO philt (sno, p01, p02, p03, p04, p05) VALUES ({temp},'think','think','think','think','think');")
 
 mealss=[]
@@ -47,7 +47,7 @@ class Din_Phil:
             while not self.stop_flag:
                 self.status[i] = 'Thinking'
                 time.sleep(random.random()*0.1)
-                self.status[i] = '  _  '
+                self.status[i] = 'Waiting'
                 if self.chopstick[nxt].acquire(timeout=1):
                     self.chop_hold[i] = 1
                     self.cstat[i] = i + 1
@@ -90,16 +90,17 @@ def main():
         chops.append(lst3)
         cst.append(lst4)
         try: 
-            cur.execute(f"INSERT INTO philt (sno, p01, p02, p03, p04, p05) VALUES ({i},'{lst[0]}','{lst[1]}','{lst[2]}','{lst[3]}','{lst[4]}');")
+            cur.execute(f"INSERT INTO philt (p01, p02, p03, p04, p05) VALUES ('{lst[0]}','{lst[1]}','{lst[2]}','{lst[3]}','{lst[4]}');")
             con.commit()
-        except:
-            print("Not able to enter this data")
+        except Exception as e:
+            print("Not able to enter this data",e)
         #print("".join("{:3d} ".format(m) for m in dinnning_Philosophers.meals)," : ",str(sum(dinnning_Philosophers.meals)))
         time.sleep(0.1)
         i=i-1
     
     dinnning_Philosophers.stop_threads()
-
+    # con.commit() 
+    # con.close()
     for p in phil_arr:
         p.join()
     for i in range(len(phil_state)):
@@ -108,14 +109,14 @@ def main():
 #     for i in range(len(phil_state)):
 #         cur.execute(f"INSERT into philosophers VALUES ({i},{phil_state[i][0]},{phil_state[i][1]},{phil_state[i][2]},{phil_state[i][3]},{phil_state[i][4]}")
 #         conn.commit()
-# conn.close()
+
 
 
 
     # print(mealss[0])
     # print(mealss[10])
     # print(mealss[20])
-con.commit() 
+
 def get_data():
     # update variables and arrays here
     data = {

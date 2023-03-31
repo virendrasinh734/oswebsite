@@ -70,8 +70,14 @@ function ClookSwitch(){
 }
 function LeftSwitch(){
     dir_value=0;
-    left.classList.add('active');
-    right.classList.remove('active');
+    try{
+        left.classList.add('active');
+        right.classList.remove('active');
+    }
+    catch{
+
+    }
+    
 }
 function RightSwitch(){
     dir_value=1;

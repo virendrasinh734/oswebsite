@@ -1,5 +1,10 @@
 :root{
     --accent : red;
+    --gradientTop: red;
+    --gradientBottom:black;
+    --thirdColor: #878e88;
+    --fourthColor: black;
+    --fifthColor: black;
 }
 *{
     box-sizing: border-box;
@@ -14,10 +19,10 @@ body{
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    
 }
 /* backend related stuff */
 #header{
-    background: transparent;
     z-index: 1;
     display: flex;
     flex-direction: row;
@@ -25,6 +30,7 @@ body{
     height: 10vh;
     width: 100%;
     overflow-y: hidden;
+    background: linear-gradient(45deg,var(--fourthColor),var(--fifthColor));
 }
 .buttontype1{
     color: aliceblue;
@@ -52,11 +58,12 @@ body{
     justify-content: center;
     align-items: center;
     margin: 0;
+    background: linear-gradient(180deg,var(--gradientTop),var(--gradientBottom));
     padding: 0;
 }
 p{
     padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.481);
+    background-color: black;
     color: white;
     position: relative;
     font-size: 1.5rem;
@@ -70,6 +77,8 @@ p{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    /* background: linear-gradient(45deg,var(--fourthColor),var(--fifthColor)); */
+    background: transparent;
 }
 .card{
     /* border: 0.1rem solid white; */
@@ -77,6 +86,7 @@ p{
     min-width: 20%;
     display: flex;
     flex-direction: column;
+    background: transparent;
 }
 @media screen and (max-width: 650px){
     .container{
@@ -101,31 +111,25 @@ p{
     border-top-right-radius: 1rem;
 }
 .name{
-    color: white;
+    color: #23242A;
     margin: 0.5rem;
     margin-bottom: 0rem;
-    border-radius: 1rem;
-    border: 0.1rem solid rgba(255, 255, 255, 0.495);
-    background-color: red;
+    border: 0.1rem solid white;
+    background: white;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
     padding: 1rem;
 }
 .status{
+    background-color: #24252A;
     color: white;
     margin: 0.5rem;
-    background-color: blue;
-    border-radius: 1rem;
-    border-color: green;
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
     border: 0.1rem solid white;
     padding: 1rem;
     margin-top: 0rem;
     margin-bottom: 0rem;
-}
-#st{
-    flex-shrink: 6;
 }
 #table1{
     width: 10rem;
@@ -136,45 +140,39 @@ p{
     left: 10rem;
     top: 10rem;
 }
-.title{
-        color: white;
-        text-align: center;
-        font-family: TitleFont;
-        letter-spacing: 0.5rem;
-        font-size: 1.5rem;
-        margin-left: 10%;
-        border-radius: 15px;
-        margin-right: 10%;
-        /* margin-top: 5%; */
-        border-bottom: 5px solid red;
-}
 .person{
     position: relative;
     width: 2rem;
     height: 2rem;
-    background-color: var(--accent);
+    background-color: var(--gradientTop);
     border-radius: 5rem;
     margin: 0px;
     padding: 0px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: visible;
-    box-shadow: 0px 0px 15px 1px var(--accent);
 }
 .personactive{
     box-shadow: 0px 0px 15px 1px var(--accent);
 }
+#bg{
+    position: absolute;
+    top: 6rem;
+    background: linear-gradient(45deg,var(--fourthColor),var(--fifthColor));
+    border-radius: 1rem;
+    box-shadow: -30px 30px 105px 1px #23242A;
+    overflow: hidden;
+}
 #tablecontainer{
     scale: 150%;
-    overflow: hidden;
-    position: absolute;
+    
+    /* position: absolute; */
     top: 10%;
     height: 30rem;
     width: 30rem;
     padding: 0;
     margin: 0;
     display: flex;
+    background: transparent;
 }
 .chopstick{
     position: relative;

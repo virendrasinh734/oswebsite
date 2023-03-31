@@ -20,9 +20,9 @@ function sleep(ms) {
     var p23 = document.getElementById("p23");
     var p45 = document.getElementById("p45");
 async function get_states(){
-    document.getElementById("st").innerHTML="Starting Simulation";
+    // document.getElementById("st").innerHTML="Starting Simulation";
     var xhr = new XMLHttpRequest();
-    document.getElementById("st").style.display="block";
+    // document.getElementById("st").style.display="block";
     xhr.open('GET', '/data');
     xhr.onload = async function() {
         if (xhr.status === 200) {
@@ -46,7 +46,7 @@ async function get_states(){
             // console.log(r);
             // Update the HTML elements with the data
             // console.log(data);
-            document.getElementById("st").style.display="none";
+            // document.getElementById("st").style.display="none";
             for(let l=0;l<r[1].length;l++){
                 document.getElementById('00').innerHTML = r[1][l][0];
                 document.getElementById('01').innerHTML = r[1][l][1];

@@ -1,6 +1,8 @@
 headindexInput = document.getElementById("PID");
 table = document.getElementById("table1");
-inpus = document.getElementById("sfsInput");
+let tableref = document.getElementById("tablecontainer");
+let tableref1 = document.getElementById("tablecontainer1");
+inpus = document.getElementById("inputcontainer");
 
 
 //initialising the required variables and arrays
@@ -26,26 +28,26 @@ function data_extractor(){
 function Lock(){
     if(headindexInput.value != ""){
         headindexInput.disabled = true;
-        table.style.transform = "scaleY(100%)";
-        inpus.style.transform = "scaleY(100%)";
-        document.getElementById("caldiv").style.display = "flex";
+        tableref.style.transform="translateX(0rem)";
+        tableref.style.opacity="100%";
     }
 }
 function UnLock(){
     
     if(headindexInput.disabled){
-        table.style.transform = "scaleY(0%)";
-        inpus.style.transform = "scaleY(0%)";
-        document.getElementById("caldiv").style.display = "none";
+        tableref.style.transform="translateX(4rem)";
+        tableref.style.opacity="0%";
+        tableref1.style.transform="translateX(4rem)";
+        tableref1.style.opacity="0%";
         headindexInput.disabled = false;
         headindexInput.value = null;
         data = [];
         DeleteAllRows();
         capacity = 0;
         document.getElementById("pageFaults").innerHTML="";
-        // document.getElementById("missHit").innerHTML="";
-        document.getElementById("final").style.transform = "scaleY(0%)";
-        document.getElementById("answercontainer").style.transform = "scaleY(0%)";
+        document.getElementById("Tablediv").style.transform = "translateX(5rem)";
+        document.getElementById("Tablediv").style.opacity = "0%";
+        document.getElementById("pageFaults").style.transform = "scaleY(0%)";
     }
 }
 var data = [];
@@ -92,6 +94,8 @@ function DeleteAllRowsFinalTable(){
 
 //the main function for running the fifo algorithm
 function Calculate(){
+    tableref1.style.transform="translateX(0rem)";
+    tableref1.style.opacity="100%";
     if(capacity>0){
         DeleteAllRowsFinalTable();
     }
@@ -100,6 +104,9 @@ function Calculate(){
     data_extractor();
     // inputarr=[];
     page_faults = 0;
+    document.getElementById("Tablediv").style.transform = "translateX(0rem)";
+    document.getElementById("Tablediv").style.opacity = "100%";
+    document.getElementById("pageFaults").style.transform = "scaleY(100%)";
     console.log(inputarr.length);
     console.log(capacity);
     CreateArray(inputarr.length, capacity);
@@ -130,7 +137,7 @@ function Calculate(){
             CreateFinalTable();
             document.getElementById("pageFaults").innerHTML = "PAGE FAULTS: "+page_faults;
             // document.getElementById("missHit").innerHTML =  "MissHITS: "+misshit;
-            document.getElementById("answercontainer").style.transform = "scaleY(100%)";
+            // document.getElementById("answercontainer").style.transform = "scaleY(100%)";
             hit=0;
             array1 = [];
             misshit=[];
