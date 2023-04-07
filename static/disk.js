@@ -7,6 +7,11 @@ var left;
 var right;
 function eLock(){
     headindexInput= document.getElementById("PID");
+
+    if(headindexInput.value>=200 || headindexInput.value<0){
+        alert("Please enter between 0 and 199");
+        return;
+    }
     table= document.getElementById("table1");
     inpus= document.getElementById("sfsInput");
     look= document.getElementById("look");
@@ -88,14 +93,20 @@ function RightSwitch(){
 var data = [];
 rowIndex = -1;
 function InsertRow(){
+    if(document.getElementById("pindex").value<0 || document.getElementById("pindex").value>=200){
+        alert("Please enter between 0 and 199");
+        return;
+    }
+
     for(let j=0 ; j<data.length ; j++){
         if(data[j] == document.getElementById("pindex").value){
             alert("Duplicate Entry");
             return;
         }
     }
+    
     rowIndex += 1;
-    data[rowIndex] = document.getElementById("pindex").value;
+    data[rowIndex] = Math.round(document.getElementById("pindex").value);
 
     // data[rowIndex][0] = document.getElementById("pindex").value;
     //test case not checked(if negative values or not)

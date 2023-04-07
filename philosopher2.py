@@ -4,7 +4,7 @@ import random
 import time
 import sqlite3
 
-con=sqlite3.connect("phil.db")
+con = sqlite3.connect('phil.db', check_same_thread=False)
 cur=con.cursor()
 temp=100
 # cur.execute("CREATE TABLE philt (sno integer primary key autoincrement, p01 varchar(30),p02 varchar(30),p03 varchar(30),p04 varchar(30),p05 varchar(30));")
@@ -129,4 +129,3 @@ def get_data():
 
 if __name__ == "__main__":
     main()
-

@@ -7,7 +7,11 @@ app=Flask(__name__)
 
 @app.route('/')
 def index():
+    return render_template('greetings.html')
+@app.route('/main')
+def mainn():
     return render_template('index.html')
+
 @app.route('/Sjf')
 def Sjf():
     return render_template('sjf.html')
