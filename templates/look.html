@@ -5,41 +5,116 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='look.css')}}">
     <script src ="{{ url_for('static', filename='disk.js')}}"></script>
-    
+    <!-- <link rel="stylesheet" href="/static/look.css">
+    <script src="/static/disk.js"></script> -->
 </head>
 <body>
 <!------------------------------------------------------------------------------------------------>
     <!--First division (Goback button div) used to position the goBack button-->
-    <div id="DIV1">
-        <button class="buttontype1" onclick="window.location.href='/main';">GO back</button>
-    </div>
-<!------------------------------------------------------------------------------------------------>
-    <!--Title -->
+    <header>
+        <nav>
+          <ul>
+            <li><a class="linka" onclick="window.location.href='/';">Go back</a></li>
+            <li><a class="linka" onclick="window.location.href='/Sjf';" >Shortest Job Simulator</a></li>
+            <li><a class="linka" onclick="window.location.href='/dinningP';">Dining Philosopher Simulator</a></li>
+            <li  class="aactive"><a class="linka" onclick="window.location.href='/look';">Look Clook Simulator</a></li>
+            <li><a class="linka" onclick="window.location.href='/fcfs';">First Come First Serve Simulator</a></li>
+          </ul>
+        </nav>
+    </header>
+<main>
+    <section id="theory">
+        <!-- <h1 id="theorytitle">THEORY<button id="hide" onclick="HideTheory();">Hide</button></h1> -->
+        
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Theory
+          </button>
+        <div class="collapse" id="collapseExample" style="background: transparent;">
+        <div id="TEXTDIV">
+            <div class="highlight">Definition: </div>
+            Disk scheduling is done by operating systems to schedule I/O requests arriving for the disk. Disk scheduling is also known as I/O scheduling.
+            Disk scheduling is important because:
+            Two or more requests may be far from each other so can result in greater disk arm movement.
+            Hard drives are one of the slowest parts of the computer system and thus need to be accessed in an efficient manner.
+            <br><br>
+            1.Seek Time: Seek time is the time taken to locate the disk arm to a specified track where the data is to be read or written. So the disk scheduling algorithm that gives minimum average seek time is better.
+            <br><br>
+            2. Rotational Latency: Rotational Latency is the time taken by the desired sector of disk to rotate into a position so that it can access the read/write heads. So the disk scheduling algorithm that gives minimum rotational latency is better.
+            <br><br>
+            3.Transfer Time: Transfer time is the time to transfer the data. It depends on the rotating speed of the disk and number of bytes to be transferred.
+            <br><br>
+            <!-- <div class="highlight">LOOK algorithm</div> -->
+            <!-- LOOK is the advanced version of SCAN (elevator) disk scheduling algorithm which gives slightly better seek time than any other algorithm in the hierarchy (FCFS->SRTF->SCAN->C-SCAN->LOOK). The LOOK algorithm services request similarly as SCAN algorithm meanwhile it also “looks” ahead as if there are more tracks that are needed to be serviced in the same direction. If there are no pending requests in the moving direction the head reverses the direction and starts servicing requests in the opposite direction.
+            The main reason behind the better performance of LOOK algorithm in comparison to SCAN is because in this algorithm the head is not allowed to move till the end of the disk.
+            <br><br>
+            1. Let Request array represents an array storing indexes of tracks that have been requested in ascending order of their time of arrival. 'head' is the position of disk head.
+            <br><br>
+            2. The initial direction in which the head is moving is given and it services in the same direction.
+            <br><br>
+            3. The head services all the requests one by one in the direction the head is moving.
+            <br><br>
+            4. The head continues to move in the same direction until all the requests in this direction are finished.
+            <br><br>
+            5. While moving in this direction calculate the absolute distance of the track from the head.
+            <br><br>
+            6. Increment the total seek count with this distance.
+            <br><br>
+            7. Currently serviced track position now becomes the new head position.
+            <br><br>
+            8. Go to step 5 until we reach the last request in this direction.
+            <div class="highlight">CLOOK algorithm</div>
+            C-LOOK is an enhanced version of both SCAN as well as LOOK disk scheduling algorithms. This algorithm also uses the idea of wrapping the tracks as a circular cylinder as C-SCAN algorithm but the seek time is better than C-SCAN algorithm. We know that C-SCAN is used to avoid starvation and services all the requests more uniformly, the same goes for C-LOOK. 
+            <br><br>
+            In this algorithm, the head services requests only in one direction(either left or right) until all the requests in this direction are not serviced and then jumps back to the farthest request on the other direction and service the remaining requests which gives a better uniform servicing as well as avoids wasting seek time for going till the end of the disk.
+            <br><br>
+            1. Let Request array represents an array storing indexes of the tracks that have been requested in ascending order of their time of arrival and head is the position of the disk head.
+            <br><br>
+            2. The initial direction in which the head is moving is given and it services in the same direction.
+            <br><br>
+            3. The head services all the requests one by one in the direction it is moving.
+            <br><br>
+            4. The head continues to move in the same direction until all the requests in this direction have been serviced.
+            <br><br>
+            5. While moving in this direction, calculate the absolute distance of the tracks from the head.
+            <br><br>
+            6. Increment the total seek count with this distance.
+            <br><br>
+            7. Currently serviced track position now becomes the new head position.
+            <br><br>
+            8. Go to step 5 until we reach the last request in this direction.
+            <br><br>
+            9. If we reach the last request in the current direction then reverse the direction and move the head in this direction until we reach the last request that is needed to be serviced in this direction without servicing the intermediate requests.
+            <br><br>
+            10. Reverse the direction and go to step 3 until all the requests have not been serviced. -->
+        </div>
+        </div>
+    </section>
     <h1>
         Look/ c Look simulator
     </h1>
-    <div id="head">
-        <div id="togglecontainer">
-            <div class="togglebutton">
-                <a class="toggletext active" id="look" href="javascript:LookSwitch()">LOOK</a>
-                <a class="toggletext" id="clook" href="javascript:ClookSwitch()">CLOOK</a>
+    <section id="simulator">
+        <div id="inputcontainer">
+            <div id="head">
+                <div id="togglecontainer">
+                    <div class="togglebutton">
+                        <a class="toggletext active" id="look" href="javascript:LookSwitch()">LOOK</a>
+                        <a class="toggletext" id="clook" href="javascript:ClookSwitch()">CLOOK</a>
+                    </div>
+                </div>
+                <div class="InputBox">
+                    <input id="PID" type="number" required="required">
+                    <span>Head Index</span>
+                    <i></i>
+                </div>
+                <button class="buttontype1" id="HeadIndex" onclick="eLock()">SET</button>
+                <button class="buttontype1" id="HeadIndex" onclick="UnLock()">RESET</button>
             </div>
-        </div>
-        <div class="InputBox">
-            <input id="PID" type="number" required="required">
-            <span>Head Index</span>
-            <i></i>
-        </div>
-        <button class="buttontype1" id="HeadIndex" onclick="eLock()">SET</button>
-        <button class="buttontype1" id="HeadIndex" onclick="UnLock()">RESET</button>
-    </div>
-<!------------------------------------------------------------------------------------------------>
-    <!-- Inpute div (Outer box of the main body) used to position all the elements together in a group-->
-    <div id="mainconn">
-        <div id="leftt">
             <div id="sfsInput">        
                 <!------------------------------------------------------------------------------------------------>
                 <!-- pid -->
@@ -59,8 +134,6 @@
                 <!-- Submit button -->
                 <input id="Submit" type="submit" value="Input Values" onclick="InsertRow()">
             </div>
-            <!------------------------------------------------------------------------------------------------>
-            <!-- TABLE DIV -->
             <div id="Tablediv">
                 <table id="table1">
                     <thead>
@@ -80,7 +153,7 @@
                 <button class="buttontype1" onclick="Calculate()">Calculate</button>
             </div>
         </div>
-        <div id="rightt">
+        <div id="tablecontainer">
             <div id="answercontainer">
                 <div id="tot"></div>
                 <div id="seq"></div>
@@ -89,9 +162,8 @@
                 <div id="myPlot" style="width:100%;max-width:700px"></div>
             </div>
         </div>
-
-    </div>
-    
+    </section>
+</main>
 </body>
 
 </html>

@@ -1,0 +1,270 @@
+:root{
+  --Acolor: #A6D0DD;
+  --Bcolor: #FF6969;
+  --Ccolor: #FFD3B0;
+  --Dcolor: #FFF9DE;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Helvetica', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #F5F5F5;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin-left: 20px;
+}
+
+nav li:first-child {
+  margin-left: 0;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: var(--Bcolor);
+}
+
+main {
+  margin-top: 80px;
+}
+
+#hero {
+  background-color: var(--Bcolor);
+  color: #FFF;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+#hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+#hero p {
+  font-size: 24px;
+}
+
+#greetings {
+  background-color: var(--Ccolor);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+#greetings h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+#greetings p {
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#projects {
+  background-color: #e8e8e8;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+#projects h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+#projects ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#projects li {
+  margin: 20px;
+  max-width: 400px;
+}
+
+#projects a {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#projects a:hover {
+  color: var(--Bcolor);
+}
+
+#aboutus {
+  background-color: var(--Bcolor);
+  color: #FFF;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+#aboutus h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+#aboutus p {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+footer {
+  background-color: #333;
+  color: #FFF;
+  padding: 20px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 14px;
+}
+/* .card {
+  width: 190px;
+  height: 254px;
+  border-radius: 30px;
+  background: #e0e0e0;
+  box-shadow: 15px 15px 30px #bebebe,
+             -15px -15px 30px #ffffff;
+} */
+
+.card {
+  width: 20rem;
+  height: 15rem;
+  border-radius: 1em;
+  padding: 1.9rem;
+  background: #f5f5f5;
+  position: relative;
+  display: flex;
+  /* align-items: flex-end; */
+  transition: 0.4s ease-out;
+  box-shadow: 0px 7px 20px rgba(43, 8, 37, 0.2);  
+  box-shadow: 20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff;
+  justify-content: center;
+  align-items: center;
+ }
+ .pname{
+  color: var(--Dcolor);
+  z-index: 3;
+  position: absolute;
+  top: 5%;
+  font-size: larger;
+  font-weight: bold ;
+ }
+
+ .card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(238, 116, 116, 0.4); */
+  z-index: 2;
+  transition: 0.5s;
+ }
+ 
+ .card-info {
+  position: relative;
+  z-index: 3;
+  color: #333;
+  opacity: 0;
+  transform: translateY(20%);
+  transition: 0.5s;
+ }
+ 
+ /*Text*/
+ .text-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+ }
+ 
+ .text-body {
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  margin: 5px 0 15px 0;
+ }
+ 
+ /*Button*/
+ .card-button {
+  padding: 0.6rem;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  background: var(--Bcolor);
+  color: white;
+  font-weight: bold;
+  transition: 0.4s ease;
+ }
+ 
+ /*Image*/
+ .card-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 1rem;
+  background: linear-gradient(to bottom, #A6D0DD, #9ac6d4);
+ }
+ 
+ /*Hover*/
+ .card:hover {
+  transform: translateY(5%);
+ }
+ 
+ .card:hover:before {
+  opacity: 1;
+ }
+ 
+ .card:hover .card-info {
+  opacity: 1;
+  transform: translateY(0);
+ }
+ 
+ .card-button:hover {
+  background: rgba(218, 77, 77, 0.4);
+  color: #f5f5f5;
+ }

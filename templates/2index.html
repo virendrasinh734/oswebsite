@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My College Project</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='2style.css')}}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#aboutus">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero">
+        <h1>OS Project</h1>
+        <p>Explore our projects below.</p>
+      </section>
+
+      <section id="greetings">
+        <h2>Greetings!!</h2>
+        <p>Underneath lies the presentation of a project that shall showcase the implementation of various Operating
+          System Algorithms. There are four such simulations that exist alongside the theory that pertains to them. The
+          simulations include, Shortest Job First Algorithm, Dining philosophers'problem with semaphore, Look/C-look disk scheduling and FIFO.</p>
+      </section>
+
+      <section id="projects">
+        <h2>Our Projects</h2>
+        <ul>
+          <li>
+            <div class="card">
+              <div class="pname">PROJECT 1<br><br>Shortest Job First</div>
+              <div class="card-img"></div>
+                <div class="card-info">
+                  <p class="text-body">Schedule Jobs in a system</p>
+                  <button class="card-button" onclick="window.location.href='/Sjf'">Read More</button>
+                </div>
+              </div>
+          </li>
+          <li>
+            <div class="card">
+              <div class="pname">PROJECT 2<br><br>Dining Philosopher with Semaphore</div>
+              <div class="card-img"></div>
+                <div class="card-info">
+                  <p class="text-body"><br><br><br>Perfrom Multiple tasks Simultaneously</p>
+                  <button class="card-button" onclick="window.location.href='/dinningP'">Read More</button>
+                </div>
+              </div>
+          </li>
+          <li>
+            <div class="card">
+              <div class="pname">PROJECT 3 <br><br>lOOK / CLOOK</div>
+              <div class="card-img"></div>
+                <div class="card-info">
+                  <p class="text-body">A disk scheduling Algorithm</p>
+                  <button class="card-button" onclick="window.location.href='/look'">Read More</button>
+                </div>
+              </div>
+          </li>
+          <li>
+            <div class="card">
+              <div class="pname">PROJECT 4 <br><br>First Come First Serve</div>
+              <div class="card-img"></div>
+                <div class="card-info">
+                  <p class="text-body">A page scheduling Algorithm</p>
+                  <button class="card-button" onclick="window.location.href='/fcfs'">Read More</button>
+                </div>
+              </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="aboutus">
+        <h2>About Us</h2>
+        <p>This project was a Created by the combined efforts of </p>
+        <p>Siddhant Engineer, Mathremedes Chheda, Shubh Arora and Virendrasinh Khuman</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Have a Great Day</p>
+    </footer>
+  </body>
+</html>

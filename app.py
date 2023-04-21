@@ -1,5 +1,5 @@
 from flask import Flask,render_template,jsonify,request
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import philosopher2
 import fcfs
@@ -7,10 +7,7 @@ app=Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('greetings.html')
-@app.route('/main')
-def mainn():
-    return render_template('index.html')
+    return render_template('2index.html')
 
 @app.route('/Sjf')
 def Sjf():

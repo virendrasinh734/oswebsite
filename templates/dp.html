@@ -5,54 +5,105 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dp.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 </head>
 <body>
-    <div id="header">
-        <button class="buttontype1" onclick="window.location.href='/main';" >GO back</button>
-        <button class="buttontype1" onclick="get_states()">Start Simulation</button>
-        <button class="buttontype1">Stop Simulation</button>
-    </div>
-    <div id="ANIM">
-        <div id="bg">
-            <div id="tablecontainer">
-                <div id="table1"></div>
-                <div id="p1" class="person" style="left : 4rem; top : 7rem"></div>
-                <div id="p2" class="person" style="left : -4rem; top : 11rem"></div>
-                <div id="p5" class="person" style="left : 6rem; top : 11rem"></div>
-                <div id="p4" class="person" style="left : 3rem; top : 19rem"></div>
-                <div id="p3" class="person" style="left : -9rem; top : 19rem"></div>
-                <div id="p15" class="chopstick" style="left: -3rem; top: 11rem; rotate: 45deg;"></div>
-                <div id="p12" class="chopstick" style="left: -7.5rem; top: 11rem; rotate: -45deg;"></div>
-                <div id="p45" class="chopstick" style="left: -2rem; top: 15rem; rotate: 115deg;"></div>
-                <div id="p23" class="chopstick" style="left: -9rem; top: 15rem; rotate: 65deg;"></div>
-                <div id="p34" class="chopstick" style="left: -6rem; top: 17rem; rotate: 0deg;"></div>
+    <header>
+        <nav>
+          <ul>
+            <li><a class="linka" onclick="window.location.href='/';">Go back</a></li>
+            <li ><a class="linka" onclick="window.location.href='/Sjf';" >Shortest Job Simulator</a></li>
+            <li class="aactive"><a class="linka" onclick="window.location.href='/dinningP';">Dining Philosopher Simulator</a></li>
+            <li><a class="linka" onclick="window.location.href='/look';">Look Clook Simulator</a></li>
+            <li><a class="linka" onclick="window.location.href='/fcfs';">First Come First Serve Simulator</a></li>
+          </ul>
+        </nav>
+    </header>
+<main>
+    <section id="theory">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Theory
+          </button>
+        <div class="collapse" id="collapseExample" style="background: transparent;">
+        <!-- <h1 id="theorytitle">THEORY<button id="hide" onclick="HideTheory();">Hide</button></h1> -->
+        <div id="TEXTDIV">
+            <div class="highlight">Definition: </div>
+            -> In 1965, Djikstra completed a synchronisation problem that he calls the dining philosophers problem. Dining Philosophers Problem is one of the classic problems in the synchronisation
+            <br>
+            <br>
+            -> Dining Philosophers Problem describes a situation where five philosophers are sat around a table and have a chopstick each to their left, thus implying each one of them would have one chopstick each on either side of theirs whilst the table would have a total of five chopsticks. In the centre of the table, a bowl with food has been placed. The conditions applied in this situation is that any philosopher can only eat the food if they have picked up both the chopsticks. They will pick the chopsticks up one at a time but can only eat when they have a chopstick in both their hands. If the philosopher is not eating, then they shall go into a thinking state.
+            <br><br>
+            -> Threads and semaphores have been implemented to synchronise the current problem. A semaphore is a variable or abstract data type used to control access to a common resource by multiple threads and avoid critical section problems in a concurrent system such as a multitasking operating system. Semaphores which allow an arbitrary resource count are called counting semaphores, while semaphores which are restricted to the values 0 and 1 (or locked/unlocked, unavailable/available) are called binary semaphores and are used to implement locks.
+            <div class="highlight" >Advantages of Synchronisation as in Dining Philosophers Problem:</div>
+            -> It's particularly critical in a multi-process system where multiple processes are executing at the same time and trying to access the very same shared resource or data.
+            <br><br>
+            -> This could lead to discrepancies in data sharing. As a result, modifications implemented by one process may or may not be reflected when the other processes access the same shared data. The processes must be synchronised with one another to avoid data inconsistency.
+            <br><br>
+            -> The Dining Philosophers Problem is a typical example of limitations in process synchronisation in systems with multiple processes and limited resources.
+            <div class="highlight">Deadlock</div>
+            -> The process is called deadlock if the process of waiting for a particular event that will never happen. A set of processes unconditioned deadlock when every process that is in the collection of waiting for an event that can only be done other processes are also in the collection. The process of waiting for events that will never happen. Deadlock occurs when processes attempt to access exclusive resources. 
+            <br><br>
+            -> A deadlock condition in the simulation of dining philosophers problem occurs when at one time; all the philosophers get hungry simultaneously, and all philosophers take the chopsticks in their left hand. By the time the philosophers will take the chopsticks in the right hand, a deadlock condition occurs since all philosophers will be waiting for chopsticks for their right hand respectively. The process is said to be experiencing starvation.
+            <div class="highlight">Solution</div>
+            To solve the Dining Philosophers Problem, we can implement various solutions, herein we have implemented a solution that dictates that each philosopher attempts to pick up a chopstick to their left. If Philosopher 1 can successfully pick the chopstick to their left (Chopstick 1) up, then they shall attempt to pick the chopstick to their right (Chopstick 2)  up. If they can pick the chopstick to their right (Chopstick 2)  up, then the philosopher (Philosopher 1) begins to eat. If the philosopher (Philosopher 1)  is unable to pick the chopstick (Chopstick 2) to their right up, then they drop the chopstick that they had already picked up, the one to their left (Chopstick 1) as well and go back to their thinking state. Each of the philosophers does the same process, and the dropping of both chopsticks helps us avoid the deadlock discussed earlier. The implementation of semaphores helps to note if the chopsticks are picked up or not in this synchronised process of the five philosophers attempting to eat the rice available by the process of holding the two chopsticks on each of their sides.
+        </div>
+        </div>
+    </section>
+    <h1>Simulator</h1>
+    <button onclick="get_states()" class="buttontype1">Start Simulation</button>
+    <section id="simulator">
+        <div id="tablecontaine">
+            <div id="ANIM">
+                <div id="bg">
+                    <div id="tablecontainer">
+                        <div id="table1"></div>
+                        <div id="p1" class="person" style="left : 4rem; top : 7rem"></div>
+                        <div id="p2" class="person" style="left : -4rem; top : 11rem"></div>
+                        <div id="p5" class="person" style="left : 6rem; top : 11rem"></div>
+                        <div id="p4" class="person" style="left : 3rem; top : 19rem"></div>
+                        <div id="p3" class="person" style="left : -9rem; top : 19rem"></div>
+                        <div id="p15" class="chopstick" style="left: -3rem; top: 11rem; rotate: 45deg;"></div>
+                        <div id="p12" class="chopstick" style="left: -7.5rem; top: 11rem; rotate: -45deg;"></div>
+                        <div id="p45" class="chopstick" style="left: -2rem; top: 15rem; rotate: 115deg;"></div>
+                        <div id="p23" class="chopstick" style="left: -9rem; top: 15rem; rotate: 65deg;"></div>
+                        <div id="p34" class="chopstick" style="left: -6rem; top: 17rem; rotate: 0deg;"></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div id="cardcontainer">
+            <div id="container">
+                <div class="card">
+                    <div class="name">Aristotle</div>
+                    <div class="status" id="00">STATUS: </div>
+                </div>
+                <div class="card">
+                    <div class="name">Lao-Tzu</div>
+                    <div class="status" id="01">STATUS: </div>
+                </div>
+                <div class="card">
+                    <div class="name">Confucius</div>
+                    <div class="status" id="02">STATUS: </div>
+                </div>
+                <div class="card">
+                    <div class="name">Nietzsche</div>
+                    <div class="status" id="03">STATUS: </div>
+                </div>
+                <div class="card">
+                    <div class="name">Seneca</div>
+                    <div class="status" id="04">STATUS: </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="container">
-        <div class="card">
-            <div class="name">Philosopher 1</div>
-            <div class="status" id="00">STATUS: </div>
-        </div>
-        <div class="card">
-            <div class="name">Philosopher 2</div>
-            <div class="status" id="01">STATUS: </div>
-        </div>
-        <div class="card">
-            <div class="name">Philosopher 3</div>
-            <div class="status" id="02">STATUS: </div>
-        </div>
-        <div class="card">
-            <div class="name">Philosopher 4</div>
-            <div class="status" id="03">STATUS: </div>
-        </div>
-        <div class="card">
-            <div class="name">Philosopher 5</div>
-            <div class="status" id="04">STATUS: </div>
-        </div>
-    </div>
+    </section>
+    
+</main>
+    
 </body>
 <script src="{{ url_for('static', filename='script2.js')}}"></script>
     

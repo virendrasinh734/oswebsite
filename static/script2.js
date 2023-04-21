@@ -7,7 +7,24 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
+let theoryFlag = 0;
+function HideTheory(){
+    if(theoryFlag ==0){
+        document.getElementById('theory').style.height = '0vh';
+        document.getElementById('TEXTDIV').style.display = 'none';
+        document.getElementById('theorytitle').style.fontSize = '2rem';
+        document.getElementById('hide').style.padding = '0.4rem';
+        document.getElementById('hide').innerHTML = 'SHOW';
+        theoryFlag = 1;
+        return;
+    }
+    document.getElementById('theory').style.height = '100vh';
+    document.getElementById('TEXTDIV').style.display = 'block';
+    document.getElementById('hide').style.padding = '1rem';
+    document.getElementById('theorytitle').style.fontSize = '3rem';
+    document.getElementById('hide').innerHTML = 'HIDE';
+    theoryFlag = 0;
+}
     var p1 = document.getElementById("p1");
     var p2 = document.getElementById("p2");
     var p3 = document.getElementById("p3");
@@ -20,6 +37,7 @@ function sleep(ms) {
     var p23 = document.getElementById("p23");
     var p45 = document.getElementById("p45");
 async function get_states(){
+    document.getElementById("simulator").scrollIntoView();
     // document.getElementById("st").innerHTML="Starting Simulation";
     var xhr = new XMLHttpRequest();
     // document.getElementById("st").style.display="block";
@@ -53,6 +71,16 @@ async function get_states(){
                 document.getElementById('02').innerHTML = r[1][l][2];
                 document.getElementById('03').innerHTML = r[1][l][3];
                 document.getElementById('04').innerHTML = r[1][l][4];
+                try{
+                    document.getElementById("p1").classList.remove("personactive");
+                    document.getElementById("p2").classList.remove("personactive");
+                    document.getElementById("p3").classList.remove("personactive");
+                    document.getElementById("p4").classList.remove("personactive");
+                    document.getElementById("p5").classList.remove("personactive");
+                }
+                catch{
+                    console.log("Handled");
+                }
                 if(cst[l][0]==0){
                     ChopsickToTable("p15");
                 }
@@ -62,20 +90,16 @@ async function get_states(){
                 else if(cst[l][0]==5){
                     p15ToPerson(5);
                 }
+                if(cholst[l][0]==2){
+                    let rt="p"+1;
+                    console.log(rt);
+                    document.getElementById(rt).classList.add("personactive");   
+                }
                 for(let j=1;j<5;j++){
                     console.log("the req val: "+cholst[l][j]);
-                    try{
-                        document.getElementById("p1").classList.remove("personactive");
-                        document.getElementById("p2").classList.remove("personactive");
-                        document.getElementById("p3").classList.remove("personactive");
-                        document.getElementById("p4").classList.remove("personactive");
-                        document.getElementById("p5").classList.remove("personactive");
-                    }
-                    catch{
-                        console.log("Handled");
-                    }
+                    
                     if(cholst[l][j]==2){
-                        let rt="p"+(j+1);
+                        let rt="p"+((j%5)+1);
                         console.log(rt);
                         document.getElementById(rt).classList.add("personactive");   
                     }
@@ -98,6 +122,7 @@ async function get_states(){
                 }
                 await sleep(1000);
                 }
+            
             
             // ...
         }

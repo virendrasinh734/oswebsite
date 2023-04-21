@@ -1,3 +1,11 @@
+:root{
+    --Acolor: #A6D0DD;
+    --Bcolor: #FF6969;
+    --Ccolor: #FFD3B0;
+    --Dcolor: #FFF9DE;
+    --B: #232428;
+    --L: #ECF0F1;
+  }
 @font-face {
     font-family: "TitleFont";
     src: url("cur.ttf");
@@ -6,35 +14,81 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #232428;
-    color: #ECF0F1;
+    background-color: var(--B);
+    color:#ECF0F1;
+    /* color: #23242A; */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-#mainconn{
+
+.linka:hover {
+    color: red;
+  }
+  .linka{
+    color: #23242A;
+    transition: all 0.3s ease-in-out;
+  }
+
+main {
+    margin-top: 80px;
+  }
+
+header {
+    background-color: #F5F5F5;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  nav {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-#right
-{
-    /*  */
-    display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    background-color: #F5F5F5;
     align-items: center;
-    justify-content: flex-end;
-}
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 10px; */
+  }
+  
+  nav ul {
+    background: transparent;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    background: transparent;
+    margin-left: 1rem;
+    padding: 1rem;
+  }
+  
+  nav li:first-child {
+    margin-left: 0;
+  }
+  
+  nav a {
+    background: transparent;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  .aactive{
+    border-bottom: 0.2rem solid red;
+    color: red;
+    box-shadow: 0px 0px 45px 1px black;
+  }
+  
+  nav a:hover {
+    color: red;
+  }
+
 #average{
     margin-top: -15px;
 }
-img{
-    height: 80px;
-    width: 80px;
-}
-body{
-    /* background-image: url("som.jpg");
-    background-repeat:no-repeat;
-    background-size:cover; */
-}
+
 h1{
     text-align: center;
     font-family: TitleFont;
@@ -43,7 +97,8 @@ h1{
     margin-left: 10%;
     border-radius: 15px;
     margin-right: 10%;
-    border-bottom: 5px solid red;
+    background: transparent;
+    color: var(--L);
 }
 .buttontype1{
     padding: 12px;
@@ -179,7 +234,7 @@ td{
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    
+    width: 100%;
 }
 #chart{
     width: 80%;
@@ -210,4 +265,105 @@ h2{
     justify-content: center;
     transform: scaleY(0%);
     font-weight: 600;
+}
+
+
+#theory{
+    /* height: 100vh; */
+    width: 100%;
+    background-color: var(--Bcolor);
+    padding: 1%;
+    transition: all 1s;
+}
+#theorytitle{
+    font-size: 3rem;
+    margin-top: -1rem;
+    transition: all 1s; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#TEXTDIV{
+    margin: 5%;
+    margin-top: 1%;
+    background: transparent;
+    transition: all 1s;
+    color: var(--L);
+}
+
+#Simulator{
+    transition: all 1s;
+    min-height: 100vh;
+    width: 100%;
+    height: max-content;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 70% 30%;
+}
+
+#inputcontainer{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#tablecontainer{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#chartcontainer{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+#hide{
+    background: var(--L);
+    color: var(--B);
+    height: 100%;
+    margin: 0%;
+    padding: 1rem;
+    transition: all 1s;
+}
+
+@media screen and (max-width: 650px){
+    #Simulator{
+        grid-template-columns: 100%;
+        grid-template-rows: 100% 100% 100%;
+    }
+    
+    #inputcontainer{
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+    #tablecontainer{
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+    #chartcontainer{
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
 }

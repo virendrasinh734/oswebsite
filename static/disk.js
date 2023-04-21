@@ -21,7 +21,24 @@ function eLock(){
     mLock();
 
 } 
-
+let theoryFlag = 0;
+function HideTheory(){
+    if(theoryFlag ==0){
+        document.getElementById('theory').style.height = '0vh';
+        document.getElementById('TEXTDIV').style.display = 'none';
+        document.getElementById('theorytitle').style.fontSize = '2rem';
+        document.getElementById('hide').style.padding = '0.4rem';
+        document.getElementById('hide').innerHTML = 'SHOW';
+        theoryFlag = 1;
+        return;
+    }
+    document.getElementById('theory').style.height = '100vh';
+    document.getElementById('TEXTDIV').style.display = 'block';
+    document.getElementById('hide').style.padding = '1rem';
+    document.getElementById('theorytitle').style.fontSize = '3rem';
+    document.getElementById('hide').innerHTML = 'HIDE';
+    theoryFlag = 0;
+}
 
 let look_value = 0;
 let dir_value = 0;

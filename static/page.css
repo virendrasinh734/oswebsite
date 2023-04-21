@@ -6,12 +6,21 @@
 
 /* color variables */
 :root{
-    --gradientTop: red;
-    --gradientBottom:rgb(46, 0, 0);
-    --thirdColor: red;
-    --fourthColor: black;
-    --fifthColor: black;
-}
+    --Acolor: #A6D0DD;
+    --Bcolor: #FF6969;
+    --Ccolor: #FFD3B0;
+    --Dcolor: #FFF9DE;
+    --B: #232428;
+    --L: #ECF0F1;
+  }
+
+  .linka:hover {
+    color: red;
+  }
+  .linka{
+    color: #23242A;
+    transition: all 0.3s ease-in-out;
+  }
 
 html{
     scroll-behavior: smooth;
@@ -30,25 +39,10 @@ body{
     overflow-x: hidden;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg,var(--gradientTop),var(--gradientBottom));
+    background: var(--B);
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-/* top most div */
-#header{
-    padding: 2%;
-    width: 100%;
-    top: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    /* padding-bottom: 0.5%; */
-    /* padding-top: 0.5%; */
-    background: linear-gradient(45deg,var(--fourthColor),var(--fifthColor));
-    /* box-shadow: 0px 10px 45px 1px var(--gradientBottom); */
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
 }
 
 /* part of top most div */
@@ -58,45 +52,95 @@ body{
     font-size: 2rem;
     color: #ECF0F1;
 }
-
-/* left side div */
-#inputcontainer{
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 120%;
+main {
+    margin-top: 80px;
+    width: 100%;
+    height: max-content;
     display: flex;
-    flex-direction: row;
-    margin-top: 1%;
-    scale: 80%;
+    flex-direction: column;
+  }
+header {
+    background-color: #F5F5F5;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #F5F5F5;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 10px; */
+  }
+  
+  nav ul {
+    background: transparent;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    background: transparent;
+    margin-left: 1rem;
+    padding: 1rem;
+  }
+  
+  nav li:first-child {
+    margin-left: 0;
+  }
+  
+  nav a {
+    background: transparent;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  .aactive{
+    border-bottom: 0.2rem solid red;
+    color: red;
+    box-shadow: 0px 0px 45px 1px black;
+  }
+  
+  nav a:hover {
+    color: red;
+  }
+
+h1{
+    text-align: center;
+    font-family: TitleFont;
+    letter-spacing: 0.5rem;
+    font-size: 3rem;
+    margin-left: 10%;
+    border-radius: 15px;
+    margin-right: 10%;
+    background: transparent;
+    color: var(--L);
 }
 
+/* left side div */
+
+
 /* input boxes div */
-#inputareas{
-    margin-left: 1%;
-    width: fit-content;
-    padding: 3rem;
-    background: linear-gradient(45deg,var(--fourthColor),var(--fifthColor));
-    height: fit-content;
-    border-radius: 1rem;
-    box-shadow: -30px 30px 105px 1px #23242A;
+#sfsInput{
+    padding: 50px 40px;
+    margin: 15% 15% 0px 15%;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-
-
 .InputBox{
-    background: transparent;
     position: relative;
-    width: 15rem;
-    margin-top: 1rem;
+    width: 300px;
+    margin-top: 35px;
 }
-
-/* input area */
 .InputBox input{
-    background: transparent;
     position: relative;
     width: 100%;
     padding: 20px 10px 10px;
@@ -107,28 +151,23 @@ body{
     font-size: 20px;
     z-index: 10;
 }
-
-/* the text for the refferece of input (for example "PID") */
 .InputBox span{
-    background: transparent;
     position: absolute;
     left: 0;
     padding: 20px 0px 10px;
     font-size: 18px;
-    color: white;
+    color: rgb(143, 143, 143);
     pointer-events: none;
     transition: 0.5s;
-    z-index: 10;
-    font-weight: 510;
+    z-index: 9;
 }
 .InputBox input:valid ~ span,
 .InputBox input:focus ~ span,
-.InputBox input:disabled ~span{
-    transform: translateY(-25px);
+.InputBox input:disabled ~ span{
+    color: red;
+    transform: translateY(-34px);
     font-size: 12px;
 }
-
-/* the white color style which pops up on input click */
 .InputBox i{
     position: absolute;
     left: 0;
@@ -143,26 +182,22 @@ body{
 }
 .InputBox input:valid ~ i,
 .InputBox input:focus ~ i,
-.InputBox input:disabled ~i{
+.InputBox input:disabled ~ i{
     height: 44px;
-    box-shadow: 0px 0px 25px 1px #ECF0F1;
 }
 #Submit{
-    background-color: #ECF0F1;
-    /* color: var(--gradientBottom); */
-    color: #264653;
+    background-color: red;
+    color: #ECF0F1;
     cursor: pointer;
     margin-top: 35px;
     font-size: 18px;
     font-weight: 500;
     padding: 10px;
-    /* border-radius: 10px; */
-    border: 0.1rem solid #ECF0F1;
-    z-index: 10;
-    transition: all 0.5s;
+    border-radius: 10px;
+    border: none;
 }
 #Submit:hover{
-    box-shadow: 0px 0px 45px 1px #ECF0F1;
+    background-color: rgb(136, 0, 0);
 }
 
 /* general button type */
@@ -189,29 +224,25 @@ body{
 
 /* right side div */
 #tablecontainer{
-    margin-left: 8%;
+    margin: 5%;
     padding: 3rem;
-    background: linear-gradient(45deg,var(--fourthColor),var(--fifthColor));
-    height: fit-content;
+    height: max-content;
     box-shadow: -30px 30px 105px 1px #23242A;
     border-radius: 1rem;
     opacity: 0%;
     transition: all 0.5s;
     width: max-content;
-    min-width: fit-content;
     transform: translateX(4rem);
 }
 #tablecontainer1{
-    margin-left: 8%;
+    margin: 5%;
     padding: 3rem;
-    background: linear-gradient(45deg,var(--fourthColor),var(--fifthColor));
-    height: fit-content;
+    height: max-content;
     box-shadow: -30px 30px 105px 1px #23242A;
     border-radius: 1rem;
     opacity: 0%;
     transition: all 0.5s;
     width: max-content;
-    min-width: fit-content;
     transform: translateX(4rem);
 }
 #tables{
@@ -305,5 +336,106 @@ td{
     }
     #head{
         flex-direction: column;
+    }
+}
+
+#theory{
+    /* height: 100vh;
+    width: 100%; */
+    background-color: var(--Bcolor);
+    padding: 1%;
+    /* transition: all 1s; */
+}
+
+#theorytitle{
+    font-size: 3rem;
+    margin-top: -1rem;
+    transition: all 1s; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#TEXTDIV{
+    margin: 5%;
+    margin-top: 1%;
+    background: transparent;
+    transition: all 1s;
+    color: var(--L);
+}
+
+#simulator{
+    transition: all 1s;
+    min-height: 100vh;
+    width: 100%;
+    height: max-content;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 100%;
+}
+
+.highlight{
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    border-bottom: 0.1rem solid #edf2f4;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+
+#inputcontainer{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+}
+#tablecontaine{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#hide{
+    background: var(--L);
+    color: var(--B);
+    height: 100%;
+    margin: 0%;
+    padding: 1rem;
+    transition: all 1s;
+}
+
+@media screen and (max-width: 650px){
+    #Simulator{
+        grid-template-columns: 100%;
+        grid-template-rows: 100% 100% 100%;
+    }
+    
+    #inputcontainer{
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+    #tablecontainer{
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+    #chartcontainer{
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 2;
     }
 }

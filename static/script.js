@@ -9,6 +9,27 @@ let entries=0; //process counter
 var avgwt=0;
 var avgta=0;
 let extraarrayPID=[];
+
+let theoryFlag = 0;
+function HideTheory(){
+    if(theoryFlag ==0){
+        document.getElementById('theory').style.height = '0vh';
+        document.getElementById('TEXTDIV').style.display = 'none';
+        document.getElementById('theorytitle').style.fontSize = '2rem';
+        document.getElementById('hide').style.padding = '0.4rem';
+        document.getElementById('hide').innerHTML = 'SHOW';
+        theoryFlag = 1;
+        return;
+    }
+    document.getElementById('theory').style.height = '100vh';
+    document.getElementById('TEXTDIV').style.display = 'block';
+    document.getElementById('hide').style.padding = '1rem';
+    document.getElementById('theorytitle').style.fontSize = '3rem';
+    document.getElementById('hide').innerHTML = 'HIDE';
+    theoryFlag = 0;
+}
+
+
 //------------------------------------------------------------------
 function addrow(){
     //loading the current data(user input) into current data array
@@ -288,3 +309,25 @@ let timer=0;//timer to print current time at the corner
 
 let text; //append the current time to the smaler boxes
 let col = ["red","#b30047"]; //random color cboose
+function createPDF() {
+    var sTable = document.getElementById('Tablediv').innerHTML;
+
+    var style = "<style>";
+    style = style + "table {width: 100%;font: 17px Calibri;}";
+    style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+    style = style + "padding: 2px 3px;text-align: center;}";
+    style = style + "</style>";
+    var win = window.open('', '', 'height=700,width=700');
+
+    win.document.write('<html><head>');
+    win.document.write('<title>Profile</title>');   
+    win.document.write(style);          
+    win.document.write('</head>');
+    win.document.write('<body>');
+    win.document.write(sTable);        
+    win.document.write('</body></html>');
+
+    win.document.close(); 	
+
+    win.print();    
+}
