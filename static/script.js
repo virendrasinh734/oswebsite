@@ -9,27 +9,6 @@ let entries=0; //process counter
 var avgwt=0;
 var avgta=0;
 let extraarrayPID=[];
-
-let theoryFlag = 0;
-function HideTheory(){
-    if(theoryFlag ==0){
-        document.getElementById('theory').style.height = '0vh';
-        document.getElementById('TEXTDIV').style.display = 'none';
-        document.getElementById('theorytitle').style.fontSize = '2rem';
-        document.getElementById('hide').style.padding = '0.4rem';
-        document.getElementById('hide').innerHTML = 'SHOW';
-        theoryFlag = 1;
-        return;
-    }
-    document.getElementById('theory').style.height = '100vh';
-    document.getElementById('TEXTDIV').style.display = 'block';
-    document.getElementById('hide').style.padding = '1rem';
-    document.getElementById('theorytitle').style.fontSize = '3rem';
-    document.getElementById('hide').innerHTML = 'HIDE';
-    theoryFlag = 0;
-}
-
-
 //------------------------------------------------------------------
 function addrow(){
     //loading the current data(user input) into current data array
@@ -45,9 +24,20 @@ function addrow(){
         alert("No field can empty");
         return;
     }
+    if(data[0]>999){
+        
+    }
     console.log(data[0]);
     if(data[1]<0){
         alert("Arrival time cannot be negative");
+        return;
+    }
+    if(data[1]>999){
+        alert("Arrival time maximum limit reached");
+        return;
+    }
+    if(data[2]>999){
+        alert("Burst time maximum limit reached");
         return;
     }
     if(data[2]<0){
@@ -309,6 +299,7 @@ let timer=0;//timer to print current time at the corner
 
 let text; //append the current time to the smaler boxes
 let col = ["red","#b30047"]; //random color cboose
+
 function createPDF() {
     var sTable = document.getElementById('Tablediv').innerHTML;
 
@@ -331,3 +322,20 @@ function createPDF() {
 
     win.print();    
 }
+
+
+
+function download() {
+    var div = document.getElementById("container");
+    var canvas = document.createElement("canvas");
+    canvas.width = div.offsetWidth;
+    canvas.height = div.offsetHeight;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(div, 0, 0, div.offsetWidth, div.offsetHeight);
+    var dataURL = canvas.toDataURL("image/jpeg");
+    var link = document.createElement("a");
+    link.download = "myDiv.jpg";
+    link.href = dataURL;
+    link.click();
+  }
+  
