@@ -10,13 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Fetch Render Deployment URL
-        id: get_url
-        run: echo "::set-output name=url::https://oswebsiteg8set3.onrender.com"
-
       - name: Update Deployments Section
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: update_deployments
-          client-payload: '{"url": "${{ steps.get_url.outputs.url }}"}'
+          client-payload: '{"url": "https://oswebsiteg8set3.onrender.com"}'  # Replace with your Render deployment URL
